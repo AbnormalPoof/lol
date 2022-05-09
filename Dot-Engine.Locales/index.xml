@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<data>
+	<file id="options" value="options.tsv"/>
+	<file id="discord_rpc" value="discord.tsv"/>
+	
+	<!-- American (U.S.) -->
+	<locale id="en-US" is_default="true" sort="0">	
+		<contributors value="ninjamuffin99"/>
+		<ui language="Language" region="Region" accept="Okay" />
+		<label id="en-US,en-GB,en-CA,yo-DA" language="English" region="United States"/>
+		<label id="fr-FR" language="French" region="France"/>
+		<label id="de-DE" language="German" region="Germany"/>
+	</locale>
+
+	<!-- French (France) -->
+	<locale id="fr-FR" sort="1">	
+		<contributors value="Minjump"/>
+		<ui language="Language" region="Region" accept="D'accord" />
+		<label id="en-US,en-GB,en-CA,yo-DA" language="Anglais" region="États-Unis"/>
+		<label id="fr-FR" language="Français" region="France"/>
+		<label id="de-DE" language="Allemand" region="Allemagne"/>
+	</locale>
+
+	<!-- German (Germany) -->
+	<locale id="de-DE" sort="2">	
+		<contributors value="Oxy-Queen"/>
+		<ui language="Language" region="Region" accept="OK" />
+		<label id="en-US,en-GB,en-CA,yo-DA" language="Englisch" region="Vereinigte Staaten"/>
+		<label id="fr-FR" language="Französisch" region="Frankreich"/>
+		<label id="de-DE" language="Deutsch" region="Deutschland"/>
+	</locale>
+
+	<!-- Experimental Translations -->
+	<note id="beta">
+		<text id="en-US,en-GB,en-CA,yo-DA" title="BETA" body="This translation is still in beta. Untranslated text, missing characters, and other visual glitches are very likely not the fault of the translator."/>
+		<text id="fr-FR" title="BETA" body="Ces traductions sont toujours en beta. Le texte non-traduit, des caractères manquants, et d'autres effets visuels buggés ne sont pas forcément la faute du traducteur."/>
+		<text id="de-DE" title="BETA" body="Diese übersetzung ist gerade in der beta phase. Nicht übersetzer text, fehlende charakter und andere visuelle glitche sind sehr verscheinlich nicht an schult des übersetzer."/>
+	</note>
+</data>
