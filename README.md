@@ -2,6 +2,10 @@
 
 [Join the Dot-Engine Discord](https://www.discord.gg/u9B7qkkhtM)
 
+
+miku mod port idk (contains stolen code from the original mod lol
+
+
 This is the repository for Friday Night Funkin, a game originally made for Ludum Dare 47 "Stuck In a Loop".
 
 [Play the Ludum Dare prototype](https://ninja-muffin24.itch.io/friday-night-funkin)
