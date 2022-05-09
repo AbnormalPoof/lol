@@ -1,4 +1,3 @@
-#if MODDING
 package mods;
 
 import firetongue.FireTongue;
@@ -73,9 +72,6 @@ class ModHandler
 
 			// Parsing rules for various data formats.
 			parseRules: buildParseRules(),
-
-			// Pass FireTongue into Polymod
-			firetongue: LocaleHandler.tongue
 		});
 	}
 
@@ -122,4 +118,3 @@ class ModHandler
 			trace('[POLYMOD] ${error.message}');
 	}
 }
-#end

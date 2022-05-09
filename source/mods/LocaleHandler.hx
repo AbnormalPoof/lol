@@ -13,10 +13,6 @@ class LocaleHandler
 	 * Loads all mods
 	 * Saves the mods as well
 	 */
-	public static function init()
-	{
-		loadLocale(getConfiguredLocale());
-	}
 
 	public static function loadLocale(locale:String)
 	{
