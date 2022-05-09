@@ -1,3 +1,4 @@
+#if newgrounds
 package;
 
 import flixel.util.FlxSignal;
@@ -215,3 +216,4 @@ class NGio
 		}
 	}
 }
+#end
