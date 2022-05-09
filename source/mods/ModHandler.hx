@@ -1,3 +1,4 @@
+#if MODDING
 package mods;
 
 import firetongue.FireTongue;
@@ -121,3 +122,4 @@ class ModHandler
 			trace('[POLYMOD] ${error.message}');
 	}
 }
+#end

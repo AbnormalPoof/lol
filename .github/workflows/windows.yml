@@ -29,14 +29,12 @@ jobs:
           haxelib install lime 7.9.0
           haxelib install openfl
           haxelib install flixel
-          haxelib git firetongue https://github.com/Metlmeta/firetongue.git
           haxelib run lime setup flixel
           haxelib run lime setup
           haxelib install flixel-tools
           haxelib install flixel-addons
           haxelib install flixel-ui
           haxelib install flixel-addons
-          haxelib install linc_luajit
           haxelib install format
           haxelib install hscript-ex
           haxelib install newgrounds
@@ -48,6 +46,7 @@ jobs:
           haxelib git faxe https://github.com/uhrobots/faxe
           haxelib git polymod https://github.com/MasterEric/polymod.git
           haxelib git discord_rpc https://github.com/Aidan63/linc_discord-rpc
+          haxelib git firetongue https://github.com/Metlmeta/firetongue.git
           haxelib run lime build windows -debug
           
       - uses: actions/upload-artifact@v2
