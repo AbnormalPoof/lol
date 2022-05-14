@@ -1465,7 +1465,7 @@ class PlayState extends MusicBeatState #if MODDING implements mods.IHook #end
 		camFollow.setPosition(camPos.x, camPos.y);
 		camFollow.y += 100;
 		tankCutscene.playAnim('littleShit');
-		if (PreferencesMenu.getPref('naughtyness'))
+		if (PreferencesMenu.getPref('censor-naughty'))
 		{
 		   tankCutscene.startSyncAudio = FlxG.sound.load(Paths.sound('stressCutscene'));
 		}
