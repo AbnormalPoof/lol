@@ -145,13 +145,13 @@
 
 	<!--In case you want to use the ui package-->
 	<haxelib name="flixel-ui" />
-	<haxelib name="newgrounds" unless='switch || mobile' />
+	<haxelib name="newgrounds" unless='switch || mobile || hl' />
 	<haxelib name="faxe" if='switch' />
 	<haxelib name="polymod" />
 	<haxelib name="firetongue" />
 	<haxelib name="colyseus" />
 	<haxelib name="colyseus-websocket" />
-	<haxelib name="discord_rpc" if="cpp" unless='switch || mobile' />
+	<haxelib name="discord_rpc" if="cpp" unless='switch || mobile || hl' />
 	<haxelib name="flxanimate" />
 	<!--<haxelib name="hxcpp-debug-server" if="desktop debug"/>-->
 
@@ -210,7 +210,7 @@
 	<!-- <haxedef name="SKIP_TO_PLAYSTATE" if="debug" /> -->
 	<haxedef name="LOCALSHIT" if="debug" />
 	<haxedef name="CAN_CHEAT" if="switch debug" />
-	<haxedef name="MODDING" if="cpp"/>
+	<haxedef name="MODDING" if="cpp" />
 
 	<!-- Polymod -->
 	<haxedef name="POLYMOD_SCRIPT_EXT" value=".hxs" />
@@ -222,8 +222,8 @@
 
 	<section unless='switch || hl || mobile'>
 		<!-- Compiles tool for old song conversion shit -->
-		<postbuild command='haxe -main art/SongConverter.hx --cs export/songShit' />
-		<postbuild command='ren export/songShit/tools' />
-		<postbuild command='move export/songShit/tools export/release/windows/bin' />
+		<postbuild command='haxe -main SongConverter.hx --cs export/songShit' />
+		<postbuild command='mv export/songShit/bin/SongConverter.exe export/debug/html5/bin' />
+		<postbuild command="echo \e[1;32mcompiled crap" />
 	</section>
 </project>

@@ -940,6 +940,36 @@ class PlayState extends MusicBeatState #if MODDING implements mods.IHook #end
 	       
 	   if (curStage.startsWith('expo'))
 	   {
+			perfect = new FlxSprite(0, 0);
+		    perfect.frames = Paths.getSparrowAtlas('chance/Perfect');
+		    perfect.animation.addByPrefix('perfect', "Perfect", 24, false);
+		    perfect.antialiasing = true;
+		    perfect.screenCenter();
+		    perfect.updateHitbox();
+		    add(perfect);
+		    perfect.visible = true;
+		    new FlxTimer().start(0.1, function(tmr:FlxTimer)
+	     	{
+			    perfect.visible = false;
+		    });
+
+		    start = new FlxSprite(0, 0);
+		    start.frames = Paths.getSparrowAtlas('Songs/songstart');
+		    start.animation.addByPrefix('Tutorial', 'Tutorial', 1, false);
+		    start.animation.addByPrefix('Loid', 'Loid', 1, false);	
+		    start.animation.addByPrefix('Endurance', 'Endurance', 1, false);
+		    start.animation.addByPrefix('Voca', 'Voca', 1, false);
+		    start.animation.addByPrefix('Endless', 'Endless', 1, false);
+		    start.animation.addByPrefix('PoPiPo', 'PoPiPo', 1, false);
+		    start.animation.addByPrefix('Aishite', 'Aishite', 1, false);
+		    start.animation.addByPrefix('SIU', 'SIU', 1, false);
+		    start.animation.addByPrefix('Disappearance', 'Disappearance', 1, false);
+		    start.animation.addByPrefix('Secret', 'Secret', 1, false);
+		    start.antialiasing = true;
+		    start.screenCenter(Y);
+		    start.updateHitbox();
+		    add(start);
+		    start.visible = false;
 			add(fiestaSalsa2);
 			add(light1);
 			add(fiestaSalsa);
@@ -957,36 +987,6 @@ class PlayState extends MusicBeatState #if MODDING implements mods.IHook #end
 				bgblack.visible = false;
 			});
 		}
-		perfect = new FlxSprite(0, 0);
-		perfect.frames = Paths.getSparrowAtlas('chance/Perfect');
-		perfect.animation.addByPrefix('perfect', "Perfect", 24, false);
-		perfect.antialiasing = true;
-		perfect.screenCenter();
-		perfect.updateHitbox();
-		add(perfect);
-		perfect.visible = true;
-		new FlxTimer().start(0.1, function(tmr:FlxTimer)
-		{
-			perfect.visible = false;
-		});
-
-		start = new FlxSprite(0, 0);
-		start.frames = Paths.getSparrowAtlas('Songs/songstart');
-		start.animation.addByPrefix('Tutorial', 'Tutorial', 1, false);
-		start.animation.addByPrefix('Loid', 'Loid', 1, false);	
-		start.animation.addByPrefix('Endurance', 'Endurance', 1, false);
-		start.animation.addByPrefix('Voca', 'Voca', 1, false);
-		start.animation.addByPrefix('Endless', 'Endless', 1, false);
-		start.animation.addByPrefix('PoPiPo', 'PoPiPo', 1, false);
-		start.animation.addByPrefix('Aishite', 'Aishite', 1, false);
-		start.animation.addByPrefix('SIU', 'SIU', 1, false);
-		start.animation.addByPrefix('Disappearance', 'Disappearance', 1, false);
-		start.animation.addByPrefix('Secret', 'Secret', 1, false);
-		start.antialiasing = true;
-		start.screenCenter(Y);
-		start.updateHitbox();
-		add(start);
-		start.visible = false;
 
 
 		gfCutsceneLayer = new FlxGroup();
@@ -1090,8 +1090,11 @@ class PlayState extends MusicBeatState #if MODDING implements mods.IHook #end
 		{
 			light1.cameras = [camHUD];
 		}
-		perfect.cameras = [camHUD];
-		start.cameras = [camHUD];
+		if (curStage.startsWith('expo'))
+		{
+		    perfect.cameras = [camHUD];
+		    start.cameras = [camHUD];
+        }
 
 		if (virtualPad != null)
 			virtualPad.cameras = [camHUD];
