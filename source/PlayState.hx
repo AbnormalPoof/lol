@@ -1465,8 +1465,15 @@ class PlayState extends MusicBeatState #if MODDING implements mods.IHook #end
 		camFollow.setPosition(camPos.x, camPos.y);
 		camFollow.y += 100;
 		tankCutscene.playAnim('littleShit');
-		tankCutscene.startSyncAudio = FlxG.sound.load(Paths.sound('stressCutscene'));
-		tankCutscene.startSyncFrame = 4;
+		if (PreferencesMenu.getPref('naughtyness'))
+		{
+		   tankCutscene.startSyncAudio = FlxG.sound.load(Paths.sound('stressCutscene'));
+		}
+		else
+		{
+		   tankCutscene.startSyncAudio = FlxG.sound.load(Paths.sound('song3censor'));
+		}
+		tankCutscene.startSyncFrame = 5;
 		
 
 		new FlxTimer().start(14.8, function(dagfDemon:FlxTimer)
@@ -1594,6 +1601,8 @@ class PlayState extends MusicBeatState #if MODDING implements mods.IHook #end
 				iconRPC = 'monster';
 			case 'mom-car':
 				iconRPC = 'mom';
+			case 'miku-voca':
+				iconRPC = 'miku';
 		}
 
 		// String that contains the mode defined here so it isn't necessary to call changePresence for each mode
@@ -2330,14 +2339,21 @@ class PlayState extends MusicBeatState #if MODDING implements mods.IHook #end
 						if (!daNote.mustPress)
 							daNote.visible = false;
 					}
-					if(daNote.mustPress && boyfriend.bfbot) {
-					if(daNote.isSustainNote) {
-						if(daNote.canBeHit) {
-							goodNoteHit(daNote);
-						}
-					} else if (daNote.strumTime <= Conductor.songPosition || (daNote.isSustainNote && daNote.canBeHit && daNote.mustPress)) {
-						goodNoteHit(daNote);
-					}
+					
+					// stolen from psych LOL
+					if (daNote.mustPress && boyfriend.bfbot) 
+					{
+					    if (daNote.isSustainNote) 
+					    {
+						    if (daNote.canBeHit) 
+						    {
+					            goodNoteHit(daNote);
+						    }
+					    } 
+					    else if (daNote.strumTime <= Conductor.songPosition || (daNote.isSustainNote && daNote.canBeHit && daNote.mustPress)) 
+					    {
+						    goodNoteHit(daNote);
+					    }
 					}
 
 					if (PreferencesMenu.getPref('downscroll'))
