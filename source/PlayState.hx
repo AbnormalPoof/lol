@@ -119,6 +119,7 @@ class PlayState extends MusicBeatState #if MODDING implements mods.IHook #end
 
 	var tankmenRun:FlxTypedGroup<TankmenBG>;
 	var gfCutsceneLayer:FlxGroup;
+	var fixLayer:FlxGroup;
 	var bfTankCutsceneLayer:FlxGroup;
 	var tankWatchtower:BGSprite;
 	var tankRolling:BGSprite;
@@ -131,6 +132,11 @@ class PlayState extends MusicBeatState #if MODDING implements mods.IHook #end
 	var bgblack:FlxSprite;
 	var perfect:FlxSprite;
 	var start:FlxSprite;
+	var gfDemon:FlxAnimate;
+	var gfDemon2:FlxAnimate;
+	var bfCuts:FlxSprite;
+    var gfCuts:FlxSprite;
+    var tankCutscene:CutsceneCharacter;
 	
 
 	var talking:Bool = true;
@@ -177,7 +183,8 @@ class PlayState extends MusicBeatState #if MODDING implements mods.IHook #end
 
 		FlxG.sound.cache(Paths.inst(PlayState.SONG.song));
 		FlxG.sound.cache(Paths.voices(PlayState.SONG.song));
-
+		// Assets.cache.set('tanky', IMAGE, Paths.image('atlases/leTank/tank1/spritemap1'));
+		
 		camGame = new SwagCamera();
 		camHUD = new FlxCamera();
 		camHUD.bgColor.alpha = 0;
@@ -919,6 +926,10 @@ class PlayState extends MusicBeatState #if MODDING implements mods.IHook #end
 		}
 
 		add(gf);
+		
+		fixLayer = new FlxGroup();
+		add(fixLayer);
+		
 		if (curStage == 'limo')
 			add(limo);
 		
@@ -927,55 +938,56 @@ class PlayState extends MusicBeatState #if MODDING implements mods.IHook #end
 	       
 	   add(boyfriend);
 	       
-		if (curStage.startsWith('expo'))
-				if(FlxG.save.data.distractions){
-					add(fiestaSalsa2);
-					add(light1);
-					add(fiestaSalsa);
-					add(bgblack);
-					fiestaSalsa.visible = true;
-					light1.visible = true;
-					bgblack.visible = true;
-					new FlxTimer().start(0.3, function(tmr:FlxTimer)
-					{
-						fiestaSalsa.visible = false;
-						if (curSong != 'Voca')
-						{
-							light1.visible = false;
-						}
-						bgblack.visible = false;
-					});
-				}
-		    perfect = new FlxSprite(0, 0);
-			perfect.frames = Paths.getSparrowAtlas('chance/Perfect');
-			perfect.animation.addByPrefix('perfect', "Perfect", 24, false);
-			perfect.antialiasing = true;
-			perfect.screenCenter();
-			perfect.updateHitbox();
-			add(perfect);
-			perfect.visible = true;
-			new FlxTimer().start(0.1, function(tmr:FlxTimer)
+	   if (curStage.startsWith('expo'))
+	   {
+			add(fiestaSalsa2);
+			add(light1);
+			add(fiestaSalsa);
+			add(bgblack);
+			fiestaSalsa.visible = true;
+			light1.visible = true;
+			bgblack.visible = true;
+			new FlxTimer().start(0.3, function(tmr:FlxTimer)
 			{
-				perfect.visible = false;
+				fiestaSalsa.visible = false;
+					if (curSong != 'Voca')
+					{
+						light1.visible = false;
+					}
+				bgblack.visible = false;
 			});
+		}
+		perfect = new FlxSprite(0, 0);
+		perfect.frames = Paths.getSparrowAtlas('chance/Perfect');
+		perfect.animation.addByPrefix('perfect', "Perfect", 24, false);
+		perfect.antialiasing = true;
+		perfect.screenCenter();
+		perfect.updateHitbox();
+		add(perfect);
+		perfect.visible = true;
+		new FlxTimer().start(0.1, function(tmr:FlxTimer)
+		{
+			perfect.visible = false;
+		});
 
-			start = new FlxSprite(0, 0);
-			start.frames = Paths.getSparrowAtlas('Songs/songstart');
-			start.animation.addByPrefix('Tutorial', 'Tutorial', 1, false);
-			start.animation.addByPrefix('Loid', 'Loid', 1, false);
-			start.animation.addByPrefix('Endurance', 'Endurance', 1, false);
-			start.animation.addByPrefix('Voca', 'Voca', 1, false);
-			start.animation.addByPrefix('Endless', 'Endless', 1, false);
-			start.animation.addByPrefix('PoPiPo', 'PoPiPo', 1, false);
-			start.animation.addByPrefix('Aishite', 'Aishite', 1, false);
-			start.animation.addByPrefix('SIU', 'SIU', 1, false);
-			start.animation.addByPrefix('Disappearance', 'Disappearance', 1, false);
-			start.animation.addByPrefix('Secret', 'Secret', 1, false);
-			start.antialiasing = true;
-			start.screenCenter(Y);
-			start.updateHitbox();
-			add(start);
-			start.visible = false;
+		start = new FlxSprite(0, 0);
+		start.frames = Paths.getSparrowAtlas('Songs/songstart');
+		start.animation.addByPrefix('Tutorial', 'Tutorial', 1, false);
+		start.animation.addByPrefix('Loid', 'Loid', 1, false);	
+		start.animation.addByPrefix('Endurance', 'Endurance', 1, false);
+		start.animation.addByPrefix('Voca', 'Voca', 1, false);
+		start.animation.addByPrefix('Endless', 'Endless', 1, false);
+		start.animation.addByPrefix('PoPiPo', 'PoPiPo', 1, false);
+		start.animation.addByPrefix('Aishite', 'Aishite', 1, false);
+		start.animation.addByPrefix('SIU', 'SIU', 1, false);
+		start.animation.addByPrefix('Disappearance', 'Disappearance', 1, false);
+		start.animation.addByPrefix('Secret', 'Secret', 1, false);
+		start.antialiasing = true;
+		start.screenCenter(Y);
+		start.updateHitbox();
+		add(start);
+		start.visible = false;
+
 
 		gfCutsceneLayer = new FlxGroup();
 		add(gfCutsceneLayer);
@@ -1277,19 +1289,19 @@ class PlayState extends MusicBeatState #if MODDING implements mods.IHook #end
 		FlxG.sound.music.fadeIn(5, 0, 0.5);
 
 		dad.visible = false;
-		var tankCutscene:CutsceneCharacter = new CutsceneCharacter(439, 566, Paths.getTextureAtlas('leTank/tank1'));
+		tankCutscene = new CutsceneCharacter(439, 566, Paths.getTextureAtlas('tankTalkSong'));
 		tankCutscene.antialiasing = true;
+		gfCutsceneLayer.add(tankCutscene);
 		tankCutscene.anim.addBySymbol("wellWellWell", "TANK TALK 1 P1", dad.x, dad.y, 24);
 		tankCutscene.anim.addBySymbol("killYou", "TANK TALK 1 P2", dad.x, dad.y, 24);
 		tankCutscene.startSyncAudio = FlxG.sound.load(Paths.sound('wellWellWell'));
-		gfCutsceneLayer.add(tankCutscene);
 		
 		camHUD.visible = false;
 		
-		tankCutscene.playAnim('wellWellWell');
 
 		FlxG.camera.zoom *= 1.2;
 		camFollow.y += 100;
+		tankCutscene.playAnim('wellWellWell');
 		
 
 		new FlxTimer().start(3, function(tmr:FlxTimer)
@@ -1353,11 +1365,13 @@ class PlayState extends MusicBeatState #if MODDING implements mods.IHook #end
 
 		dad.visible = false;
 
-		var tankCutscene:CutsceneCharacter = new CutsceneCharacter(445, 570, Paths.getTextureAtlas('leTank/tank2'));
+		tankCutscene = new CutsceneCharacter(445, 570, Paths.getTextureAtlas('tightBars'));
 		tankCutscene.antialiasing = true;
 		gfCutsceneLayer.add(tankCutscene);
+		gfCutsceneLayer.remove(tankCutscene);
+		gfCutsceneLayer.add(tankCutscene);
 		tankCutscene.startSyncAudio = FlxG.sound.load(Paths.sound('tankSong2'));
-		tankCutscene.startSyncFrame = 6;
+		tankCutscene.startSyncFrame = 4;
 		tankCutscene.playAnim();
 
 		new FlxTimer().start(4.1, function(ugly:FlxTimer)
@@ -1385,22 +1399,126 @@ class PlayState extends MusicBeatState #if MODDING implements mods.IHook #end
 		});
 	}
 
+	//Taken from Sanscode1937 some of it optimized by me
 	function stressIntro():Void
 	{
+		FlxG.camera.zoom = defaultCamZoom * 1.2;
+
+		camHUD.visible = false;
+
 		inCutscene = true;
+		dad.visible = false;
+        boyfriend.visible = false;
+        gf.visible = false;
 
-		var background:FlxSprite = new FlxSprite(-200, -200).makeGraphic(2 * FlxG.width, 2 * FlxG.height, FlxColor.BLACK);
-		background.scrollFactor.set();
-		add(background);
+		gfCuts = new FlxSprite(400, 130);
+		gfCuts.frames = Paths.getSparrowAtlas('characters/gfTankmen');
+		gfCuts.animation.addByPrefix('dance', 'GF Dancing at Gunpoint0', 24);
+		gfCuts.animation.play('dance');
+		gfCuts.antialiasing = true;
+		gfCuts.y -= 50;
+		gfCuts.x = 150;
+		fixLayer.add(gfCuts);
+		gf.dance();
+		
+		bfCuts = new FlxSprite(770, 450);
+		bfCuts.frames = Paths.getSparrowAtlas('characters/BOYFRIEND');
+		bfCuts.animation.addByPrefix('idle', 'BF idle dance', 24, false);
+		bfCuts.animation.play('idle');
+		bfCuts.antialiasing = true;
+		bfCuts.y += 40;
+		gfCutsceneLayer.add(bfCuts);
 
-		var vid:FlxVideo = new FlxVideo(Paths.video('stressCutscene'));
-		vid.finishCutscene = function()
+		tankCutscene = new CutsceneCharacter(439, 566, Paths.getTextureAtlas('stressCutscene'));
+		tankCutscene.antialiasing = true;
+		tankCutscene.anim.addBySymbol('littleShit','TANK TALK 3 P1 UNCUT');
+		tankCutscene.anim.addBySymbol('whoItIs','TANK TALK 3 P2 UNCUT');
+		gfCutsceneLayer.add(tankCutscene);
+
+		gfDemon2 = new FlxAnimate(400, -50, Paths.getTextureAtlas('picoShoot'));
+		gfDemon2.antialiasing = true;
+		gfDemon2.anim.addBySymbol('fix', 'Pico pew pew Atlasin');
+		gfDemon2.anim.addBySymbol('kill', 'Pico Saves them sequence');
+		gfDemon2.anim.addBySymbol('idle', 'Pico Dual Wield on Speaker idle', 0, 0, 24, true);
+		gfDemon2.y = 390;
+		gfDemon2.x = 465;
+		fixLayer.add(gfDemon2);
+		gfDemon2.playAnim();
+
+		gfDemon = new FlxAnimate(400, 130, Paths.getTextureAtlas('gfDemon'));
+		gfDemon.antialiasing = true;
+		gfDemon.anim.addBySymbol('kill', "GF Turnin Demon W Effect");
+		gfDemon.y = 405;
+		gfDemon.x = 620;
+		fixLayer.add(gfDemon);
+		
+		dad.visible = false;
+        boyfriend.visible = false;
+        gf.visible = false;
+        gfDemon.visible = false;
+        gfDemon2.visible = false;
+		
+		
+		camFollow.setPosition(camPos.x, camPos.y);
+		camFollow.y += 100;
+		tankCutscene.playAnim('littleShit');
+		tankCutscene.startSyncAudio = FlxG.sound.load(Paths.sound('stressCutscene'));
+		tankCutscene.startSyncFrame = 4;
+		
+
+		new FlxTimer().start(14.8, function(dagfDemon:FlxTimer)
 		{
-			remove(background);
-			FlxTween.tween(FlxG.camera, {zoom: defaultCamZoom}, (Conductor.crochet / 1000) * 5, {ease: FlxEase.quadInOut});
+		    FlxTween.tween(FlxG.camera, {zoom: defaultCamZoom * 1.6}, 3, {ease: FlxEase.quadInOut});
+			camFollow.y -= 200;
+			camFollow.x = 580;
+			fixLayer.remove(gfCuts);
+			gfDemon.visible = true;
+			gfDemon.playAnim("kill");
+			gfDemon.onComplete = function()
+			{
+			   fixLayer.remove(gfDemon);
+               gfCutsceneLayer.remove(bfCuts);
+               boyfriend.visible = true;
+			   gfDemon2.visible = true;
+			   FlxTween.tween(FlxG.camera, {zoom: 0.8}, 1.5);
+			   gfDemon2.playAnim('fix');
+			   gfDemon2.playAnim('kill');
+			   boyfriend.playAnim('bfCatch');	
+            }
+		});		
+		new FlxTimer().start(18.3, function (idle:FlxTimer)
+		{
+			boyfriend.playAnim('idle');
+		});						
+		new FlxTimer().start(19.1, function(ahLookWhoIsIt:FlxTimer)
+		{
+			tankCutscene.playAnim('whoItIs');
+			gfDemon2.playAnim('idle');
+		});	
+		new FlxTimer().start(20.1, function(daSmth:FlxTimer)	
+		{
+			camFollow.setPosition(camPos.x, camPos.y);
+			camFollow.x = 600;
+			camFollow.y = 500;
+		});				
+
+		new FlxTimer().start(30.8, function(eugh:FlxTimer)	
+		{
+			boyfriend.playAnim('singUPmiss');
+		});			
+
+		new FlxTimer().start(35.2, function(die:FlxTimer)
+		{
+			camHUD.visible = true;
+			inCutscene = false;
+			FlxG.sound.music.fadeOut((Conductor.crochet / 1000) * 5, 0);
+			gfCutsceneLayer.remove(tankCutscene);
+			fixLayer.remove(gfDemon2);
+			FlxTween.tween(FlxG.camera, {zoom: defaultCamZoom * 1}, (Conductor.crochet * 5) / 1000, {ease: FlxEase.quartIn});
 			startCountdown();
-			cameraMovement();
-		}
+	        dad.visible = true;
+			gf.visible = true;
+		});										
 	}
 	
 	function loidIntro():Void
@@ -2369,10 +2487,12 @@ class PlayState extends MusicBeatState #if MODDING implements mods.IHook #end
 
 				FlxG.save.data.weekUnlocked = StoryMenuState.weekUnlocked;
 				FlxG.save.flush();
+				botMode = false;
 			}
 			else
 			{
 				trace('LOADING NEXT SONG');
+				botMode = false;
 
 				FlxTransitionableState.skipNextTransIn = true;
 				FlxTransitionableState.skipNextTransOut = true;
@@ -2421,6 +2541,7 @@ class PlayState extends MusicBeatState #if MODDING implements mods.IHook #end
 		{
 			trace('WENT BACK TO FREEPLAY??');
 			switchTo(new FreeplayState());
+			botMode = false;
 		}
 	}
 

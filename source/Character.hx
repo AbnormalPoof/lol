@@ -26,7 +26,7 @@ class Character extends FlxSprite
 		changeChar(char);
 	}
 
-	var maxHoldTime:Float = 4;
+	public var maxHoldTime:Float = 4;
 
 	public function changeChar(newChar:String):Void
 	{
@@ -264,6 +264,7 @@ class Character extends FlxSprite
 				quickAnimAdd('singLEFTmiss', 'BF NOTE LEFT MISS');
 				quickAnimAdd('singRIGHTmiss', 'BF NOTE RIGHT MISS');
 				quickAnimAdd('singDOWNmiss', 'BF NOTE DOWN MISS');
+				quickAnimAdd('bfCatch', 'BF catches GF');
 
 				loadOffsetFile(curCharacter);
 

@@ -72,6 +72,9 @@ class ModHandler
 
 			// Parsing rules for various data formats.
 			parseRules: buildParseRules(),
+
+			// Pass FireTongue into Polymod
+			firetongue: LocaleHandler.tongue
 		});
 	}
 
