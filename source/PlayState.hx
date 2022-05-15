@@ -1473,7 +1473,7 @@ class PlayState extends MusicBeatState #if MODDING implements mods.IHook #end
 		{
 		   tankCutscene.startSyncAudio = FlxG.sound.load(Paths.sound('song3censor'));
 		}
-		tankCutscene.startSyncFrame = 5;
+		tankCutscene.startSyncFrame = 7;
 		
 
 		new FlxTimer().start(14.8, function(dagfDemon:FlxTimer)
@@ -1585,6 +1585,7 @@ class PlayState extends MusicBeatState #if MODDING implements mods.IHook #end
 		}
 	}
 
+    #if discord_rpc
 	function initDiscord():Void
 	{
 		#if discord_rpc
@@ -1613,8 +1614,8 @@ class PlayState extends MusicBeatState #if MODDING implements mods.IHook #end
 
 		// Updating Discord Rich Presence.
 		DiscordClient.changePresence(detailsText, SONG.song + " (" + storyDifficultyText + ")", iconRPC);
-		#end
 	}
+	#end
 
 
 	function schoolIntro():Void
