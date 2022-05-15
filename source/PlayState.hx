@@ -940,36 +940,6 @@ class PlayState extends MusicBeatState #if MODDING implements mods.IHook #end
 	       
 	   if (curStage.startsWith('expo'))
 	   {
-			perfect = new FlxSprite(0, 0);
-		    perfect.frames = Paths.getSparrowAtlas('chance/Perfect');
-		    perfect.animation.addByPrefix('perfect', "Perfect", 24, false);
-		    perfect.antialiasing = true;
-		    perfect.screenCenter();
-		    perfect.updateHitbox();
-		    add(perfect);
-		    perfect.visible = true;
-		    new FlxTimer().start(0.1, function(tmr:FlxTimer)
-	     	{
-			    perfect.visible = false;
-		    });
-
-		    start = new FlxSprite(0, 0);
-		    start.frames = Paths.getSparrowAtlas('Songs/songstart');
-		    start.animation.addByPrefix('Tutorial', 'Tutorial', 1, false);
-		    start.animation.addByPrefix('Loid', 'Loid', 1, false);	
-		    start.animation.addByPrefix('Endurance', 'Endurance', 1, false);
-		    start.animation.addByPrefix('Voca', 'Voca', 1, false);
-		    start.animation.addByPrefix('Endless', 'Endless', 1, false);
-		    start.animation.addByPrefix('PoPiPo', 'PoPiPo', 1, false);
-		    start.animation.addByPrefix('Aishite', 'Aishite', 1, false);
-		    start.animation.addByPrefix('SIU', 'SIU', 1, false);
-		    start.animation.addByPrefix('Disappearance', 'Disappearance', 1, false);
-		    start.animation.addByPrefix('Secret', 'Secret', 1, false);
-		    start.antialiasing = true;
-		    start.screenCenter(Y);
-		    start.updateHitbox();
-		    add(start);
-		    start.visible = false;
 			add(fiestaSalsa2);
 			add(light1);
 			add(fiestaSalsa);
@@ -1012,6 +982,37 @@ class PlayState extends MusicBeatState #if MODDING implements mods.IHook #end
 
 		player2Strums = new StaticNotes(0, strumLine.y);
 		add(player2Strums);
+		
+		start = new FlxSprite(0, 0);
+		    start.frames = Paths.getSparrowAtlas('Songs/songstart');
+		    start.animation.addByPrefix('Tutorial', 'Tutorial', 1, false);
+		    start.animation.addByPrefix('Loid', 'Loid', 1, false);	
+		    start.animation.addByPrefix('Endurance', 'Endurance', 1, false);
+		    start.animation.addByPrefix('Voca', 'Voca', 1, false);
+		    start.animation.addByPrefix('Endless', 'Endless', 1, false);
+		    start.animation.addByPrefix('PoPiPo', 'PoPiPo', 1, false);
+		    start.animation.addByPrefix('Aishite', 'Aishite', 1, false);
+		    start.animation.addByPrefix('SIU', 'SIU', 1, false);
+		    start.animation.addByPrefix('Disappearance', 'Disappearance', 1, false);
+		    start.animation.addByPrefix('Secret', 'Secret', 1, false);
+		    start.antialiasing = true;
+		    start.screenCenter(Y);
+		    start.updateHitbox();
+		    add(start);
+		    start.visible = false;
+		    
+		perfect = new FlxSprite(0, 0);
+		    perfect.frames = Paths.getSparrowAtlas('chance/Perfect');
+		    perfect.animation.addByPrefix('perfect', "Perfect", 24, false);
+		    perfect.antialiasing = true;
+		    perfect.screenCenter();
+		    perfect.updateHitbox();
+		    add(perfect);
+		    perfect.visible = true;
+		    new FlxTimer().start(0.1, function(tmr:FlxTimer)
+	     	{
+			    perfect.visible = false;
+		    });
 
 		grpNoteSplashes = new FlxTypedGroup<NoteSplash>();
 
@@ -1473,7 +1474,7 @@ class PlayState extends MusicBeatState #if MODDING implements mods.IHook #end
 		{
 		   tankCutscene.startSyncAudio = FlxG.sound.load(Paths.sound('song3censor'));
 		}
-		tankCutscene.startSyncFrame = 7;
+		tankCutscene.startSyncFrame = 4;
 		
 
 		new FlxTimer().start(14.8, function(dagfDemon:FlxTimer)
@@ -1588,7 +1589,6 @@ class PlayState extends MusicBeatState #if MODDING implements mods.IHook #end
     #if discord_rpc
 	function initDiscord():Void
 	{
-		#if discord_rpc
 		// Making difficulty text for Discord Rich Presence.
 		storyDifficultyText = CoolUtil.difficultyString();
 		iconRPC = SONG.player2;
@@ -1708,18 +1708,34 @@ class PlayState extends MusicBeatState #if MODDING implements mods.IHook #end
 		botMode = false;
         
         if (storyWeek == 8)
+          if (curStage.startsWith('expo') && curStage.startsWith('concert') && curStage == 'endless') 
            start.visible = true;
 		if (curSong == 'Chug' || curSong == 'Infinite' || curSong == 'sekai-wa-Mada-Hajimatte-sura-inai') {
 			start.animation.play('Secret');
+			new FlxTimer().start(3, function(tmr:FlxTimer)
+			{
+				FlxTween.tween(start,{alpha:0,x:start.x + 100},0.5,{ease:FlxEase.quartInOut,
+				onComplete:function(twn:FlxTween){
+					remove(start);
+					}
+				});
+			});
 		}
 		else if (curSong == 'Tutorial-(Miku-Edition)')
 		{
 		    start.animation.play('Tutorial');
+		    new FlxTimer().start(3, function(tmr:FlxTimer)
+			{
+				FlxTween.tween(start,{alpha:0,x:start.x + 100},0.5,{ease:FlxEase.quartInOut,
+				onComplete:function(twn:FlxTween){
+					remove(start);
+					}
+				});
+			});
 		}
 		else if (storyWeek == 8)
 		{
 		start.animation.play(curSong);
-		}
 		new FlxTimer().start(3, function(tmr:FlxTimer)
 			{
 				FlxTween.tween(start,{alpha:0,x:start.x + 100},0.5,{ease:FlxEase.quartInOut,
@@ -1728,6 +1744,7 @@ class PlayState extends MusicBeatState #if MODDING implements mods.IHook #end
 					}
 				});
 			});
+		}
 		if (curStage != 'endless' && !PreferencesMenu.getPref('middlescroll'))
 			generateStaticArrows(0);
 
@@ -3311,7 +3328,7 @@ class PlayState extends MusicBeatState #if MODDING implements mods.IHook #end
 			});
 		}
 
-		if (curBeat == 312 && curSong == 'Voca')
+		if (curBeat == 312 && curSong == 'Voca' && curStage == 'expo-two')
 		{
 			bgblack.visible = true;
 			bgblack.alpha = 0;
