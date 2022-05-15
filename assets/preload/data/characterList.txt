@@ -5,13 +5,7 @@ bf-pixel
 bf-holding-gf
 bf-voca
 gf
-gf-car
 gf-christmas
-gf-pixel
-gf-tankmen
-gf-expo
-gf-voca
-carol
 dad
 spooky
 pico
@@ -23,7 +17,6 @@ senpai
 senpai-angry
 spirit
 tankman
-pico-speaker
 miku
 miku-voca
 tricky
