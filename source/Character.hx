@@ -385,6 +385,24 @@ class Character extends FlxSprite
 				updateHitbox();
 
 				antialiasing = false;
+				
+			case 'monika':
+				frames = Paths.getSparrowAtlas('characters/monika');
+				quickAnimAdd('idle', 'Monika Idle');
+				quickAnimAdd('singUP', 'Monika UP NOTE');
+				quickAnimAdd('singLEFT', 'Monika LEFT NOTE');
+				quickAnimAdd('singRIGHT', 'Monika RIGHT NOTE');
+				quickAnimAdd('singDOWN', 'Monika DOWN NOTE');
+
+				loadOffsetFile(curCharacter);
+
+				playAnim('idle');
+
+				setGraphicSize(Std.int(width * PlayState.daPixelZoom));
+				updateHitbox();
+
+				antialiasing = false;
+
 			case 'senpai-angry':
 				frames = Paths.getSparrowAtlas('characters/senpai');
 

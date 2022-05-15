@@ -855,6 +855,13 @@ class PlayState extends MusicBeatState #if MODDING implements mods.IHook #end
 				dad.y += 300;
 			case 'parents-christmas':
 				dad.x -= 500;
+			case 'monika':
+				dad.x += 150;
+				dad.y += 360;
+				if (SONG.song.toLowerCase() == 'glitcher (monika mix)')
+					camPos.set(dad.getGraphicMidpoint().x + 300, dad.getGraphicMidpoint().y + 200);
+				else
+					camPos.set(dad.getGraphicMidpoint().x + 300, dad.getGraphicMidpoint().y);
 			case 'senpai' | 'senpai-angry':
 				dad.x += 150;
 				dad.y += 360;
@@ -2783,7 +2790,7 @@ class PlayState extends MusicBeatState #if MODDING implements mods.IHook #end
 			{
 				case 'mom':
 					camFollow.y = dad.getMidpoint().y;
-				case 'senpai' | 'senpai-angry':
+				case 'senpai' | 'senpai-angry' | 'monika':
 					camFollow.y = dad.getMidpoint().y - 430;
 					camFollow.x = dad.getMidpoint().x - 100;
 				case 'miku-voca' | 'tricky' :
