@@ -1412,6 +1412,7 @@ class PlayState extends MusicBeatState #if MODDING implements mods.IHook #end
 
 	// Taken from Sanscode1937 some of it changed by me
 	// Added censor!!!!!
+	// other crap as well maybe
 	
 	function stressIntro():Void
 	{
