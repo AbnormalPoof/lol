@@ -46,6 +46,7 @@ jobs:
           haxelib git flxanimate https://github.com/Dot-Stuff/flxanimate
           haxelib git faxe https://github.com/uhrobots/faxe
           haxelib git discord_rpc https://github.com/Aidan63/linc_discord-rpc
+          haxelib git firetongue https://github.com/Metlmeta/firetongue.git
           haxelib run lime build html5 -debug
           
       - uses: actions/upload-artifact@v2
