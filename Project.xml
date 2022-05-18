@@ -142,6 +142,7 @@
 	<!--In case you want to use the addons package-->
 	<haxelib name="flixel-addons" />
 	<haxelib name="hscript-ex" />
+	<haxelib name="hxcodec" if='cpp'/>
 
 	<!--In case you want to use the ui package-->
 	<haxelib name="flixel-ui" />
@@ -211,6 +212,7 @@
 	<haxedef name="LOCALSHIT" if="debug" />
 	<haxedef name="CAN_CHEAT" if="switch debug" />
 	<haxedef name="MODDING" if="cpp" />
+	<haxedef name="VIDEOS" if="cpp" />
 
 	<!-- Polymod -->
 	<haxedef name="POLYMOD_SCRIPT_EXT" value=".hxs" />

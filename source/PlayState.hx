@@ -1,5 +1,8 @@
 package;
 
+#if VIDEOS
+import vlc.VideoHandler;
+#end
 import Section.SwagSection;
 import Song.SwagSong;
 import flixel.FlxCamera;
@@ -1175,19 +1178,31 @@ class PlayState extends MusicBeatState #if MODDING implements mods.IHook #end
 					if (PreferencesMenu.getPref('atlas')){
 					    ughIntro();
 					}else{
+					    #if VIDEOS
+					    playCutscene('ughCutscene');
+					    #else
 					    videoCuts();
+					    #end
 					}
 				case 'guns':
 					if (PreferencesMenu.getPref('atlas')){
 					    gunsIntro();
 					}else{
+					    #if VIDEOS
+					    playCutscene('gunsCutscene');
+					    #else
 					    videoCuts();
+					    #end
 					}
 				case 'stress':
 					if (PreferencesMenu.getPref('atlas')){
 					    stressIntro();
 					}else{
+					    #if VIDEOS
+					    playCutscene('stressCutscene');
+					    #else
 					    videoCuts();
+					    #end
 					}
 				case 'loid' | 'endurance' | 'voca':
 				    videoCuts();
@@ -1302,10 +1317,6 @@ class PlayState extends MusicBeatState #if MODDING implements mods.IHook #end
 	{
 	    inCutscene = true;
 
-		var background:FlxSprite = new FlxSprite(-200, -200).makeGraphic(2 * FlxG.width, 2 * FlxG.height, FlxColor.BLACK);
-		background.scrollFactor.set();
-		add(background);
-
 		var vid:FlxVideo = new FlxVideo(Paths.video(curSong.toLowerCase() + 'Cutscene'));
 		vid.finishCutscene = function()
 		{
@@ -1315,6 +1326,30 @@ class PlayState extends MusicBeatState #if MODDING implements mods.IHook #end
 			cameraMovement();
 		}
 	}
+	
+	function playCutscene(name:String, ?atend:Bool)
+    {
+	    #if VIDEOS
+	    inCutscene = true;
+
+	    var video:VideoHandler = new VideoHandler();
+	    FlxG.sound.music.stop();
+	    video.finishCallback = function()
+	    {
+		    if (end == true)
+		    {
+			    SONG = Song.loadFromJson(storyPlaylist[0].toLowerCase());
+			    FlxG.switchState(new PlayState());
+		    }
+		    else
+	            startCountdown();
+	    }
+	    video.playVideo(Paths.video(name));
+	    #else
+	    trace('wtf r u doin?????');
+	    FlxG.switchState(new TitleState());
+	    #end
+    }
 
 	function ughIntro():Void
 	{
@@ -1335,11 +1370,9 @@ class PlayState extends MusicBeatState #if MODDING implements mods.IHook #end
 		
 		camHUD.visible = false;
 		
-
 		FlxG.camera.zoom *= 1.2;
 		camFollow.y += 100;
 		tankCutscene.playAnim('wellWellWell');
-		
 
 		new FlxTimer().start(3, function(tmr:FlxTimer)
 		{
