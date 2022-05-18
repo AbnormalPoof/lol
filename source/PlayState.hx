@@ -1410,7 +1410,9 @@ class PlayState extends MusicBeatState #if MODDING implements mods.IHook #end
 		});
 	}
 
-	//Taken from Sanscode1937 some of it optimized by me
+	// Taken from Sanscode1937 some of it changed by me
+	// Added censor!!!!!
+	
 	function stressIntro():Void
 	{
 		FlxG.camera.zoom = defaultCamZoom * 1.2;
@@ -1419,8 +1421,8 @@ class PlayState extends MusicBeatState #if MODDING implements mods.IHook #end
 
 		inCutscene = true;
 		dad.visible = false;
-        boyfriend.visible = false;
         gf.visible = false;
+        boyfriend.alpha = 0.00001;
 
 		gfCuts = new FlxSprite(400, 130);
 		gfCuts.frames = Paths.getSparrowAtlas('characters/gfTankmen');
@@ -1462,10 +1464,7 @@ class PlayState extends MusicBeatState #if MODDING implements mods.IHook #end
 		gfDemon.y = 405;
 		gfDemon.x = 620;
 		fixLayer.add(gfDemon);
-		
-		dad.visible = false;
-        boyfriend.visible = false;
-        gf.visible = false;
+	
         gfDemon.visible = false;
         gfDemon2.visible = false;
 		
@@ -1492,40 +1491,44 @@ class PlayState extends MusicBeatState #if MODDING implements mods.IHook #end
 			fixLayer.remove(gfCuts);
 			gfDemon.visible = true;
 			gfDemon.playAnim("kill");
-			gfDemon.onComplete = function()
-			{
-			   fixLayer.remove(gfDemon);
-               gfCutsceneLayer.remove(bfCuts);
-               boyfriend.visible = true;
-			   gfDemon2.visible = true;
-			   FlxTween.tween(FlxG.camera, {zoom: 0.8}, 1.5);
-			   gfDemon2.playAnim('fix');
-			   gfDemon2.playAnim('kill');
-			   boyfriend.playAnim('bfCatch');	
-            }
 		});		
-		new FlxTimer().start(18.3, function (idle:FlxTimer)
+		new FlxTimer().start(17.2, function(dagfDemon:FlxTimer)
 		{
-			boyfriend.playAnim('idle');
-		});						
-		new FlxTimer().start(19.1, function(ahLookWhoIsIt:FlxTimer)
-		{
-			tankCutscene.playAnim('whoItIs');
-			gfDemon2.playAnim('idle');
+			FlxTween.tween(FlxG.camera, {zoom: defaultCamZoom * 0.9}, 1, {ease: FlxEase.quadInOut});
+			camFollow.x = 760;
+			fixLayer.remove(gfDemon);
+			gfCutsceneLayer.remove(bfCuts);
+			boyfriend.alpha = 1.00001;
+			boyfriend.playAnim('bfCatch');	
+			gfDemon2.visible = true;
+			gfDemon2.playAnim('fix');
+			gfDemon2.playAnim('kill');
 		});	
+		new FlxTimer().start(18.3, function (idle:FlxTimer)
+			{
+				boyfriend.playAnim('idle');
+			});						
+		new FlxTimer().start(19.3, function(ahLookWhoIsIt:FlxTimer)
+			{
+				tankCutscene.playAnim('whoItIs');
+			});	
+		new FlxTimer().start(20.5, function(dagfDemon:FlxTimer)
+			{
+				gfDemon2.playAnim('idle');
+			});			
 		new FlxTimer().start(20.1, function(daSmth:FlxTimer)	
-		{
-			camFollow.setPosition(camPos.x, camPos.y);
-			camFollow.x = 600;
-			camFollow.y = 500;
-		});				
+			{
+				camFollow.setPosition(camPos.x, camPos.y);
+				camFollow.x = 600;
+				camFollow.y = 500;
+			});				
 
-		new FlxTimer().start(30.8, function(eugh:FlxTimer)	
+		new FlxTimer().start(31.2, function(eugh:FlxTimer)	
 		{
 			boyfriend.playAnim('singUPmiss');
 		});			
 
-		new FlxTimer().start(35.2, function(die:FlxTimer)
+		new FlxTimer().start(35.2, function(dagfDemon:FlxTimer)
 		{
 			camHUD.visible = true;
 			inCutscene = false;
