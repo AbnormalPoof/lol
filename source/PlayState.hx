@@ -1481,7 +1481,6 @@ class PlayState extends MusicBeatState #if MODDING implements mods.IHook #end
 		{
 		   tankCutscene.startSyncAudio = FlxG.sound.load(Paths.sound('song3censor'));
 		}
-		tankCutscene.startSyncFrame = 4;
 		
 
 		new FlxTimer().start(14.8, function(dagfDemon:FlxTimer)
