@@ -1,7 +1,0 @@
-#!/bin/bash
-
-# FOR COMMITS
-
-git add --all
-git commit -m 'auto commit idk'
-git push https://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@github.com/AbnormalPoof/lol.git
