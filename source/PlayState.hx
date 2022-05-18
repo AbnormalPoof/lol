@@ -1320,7 +1320,6 @@ class PlayState extends MusicBeatState #if MODDING implements mods.IHook #end
 		var vid:FlxVideo = new FlxVideo(Paths.video(curSong.toLowerCase() + 'Cutscene'));
 		vid.finishCutscene = function()
 		{
-			remove(background);
 			FlxTween.tween(FlxG.camera, {zoom: defaultCamZoom}, (Conductor.crochet / 1000) * 5, {ease: FlxEase.quadInOut});
 			startCountdown();
 			cameraMovement();
