@@ -1172,17 +1172,25 @@ class PlayState extends MusicBeatState #if MODDING implements mods.IHook #end
 				case 'senpai' | 'roses' | 'thorns':
 					schoolIntro();
 				case 'ugh':
-					ughIntro();
-				case 'stress':
-					stressIntro();
+					if (PreferencesMenu.getPref('atlas')){
+					    ughIntro();
+					}else{
+					    videoCuts();
+					}
 				case 'guns':
-					gunsIntro();
-				case 'loid':
-				    loidIntro();
-				case 'endurance':
-				    enduIntro();
-				case 'voca':
-				    vocaIntro();
+					if (PreferencesMenu.getPref('atlas')){
+					    gunsIntro();
+					}else{
+					    videoCuts();
+					}
+				case 'stress':
+					if (PreferencesMenu.getPref('atlas')){
+					    stressIntro();
+					}else{
+					    videoCuts();
+					}
+				case 'loid' | 'endurance' | 'voca':
+				    videoCuts();
 				default:
 					if (dialogueBox != null)
 					{
@@ -1288,6 +1296,24 @@ class PlayState extends MusicBeatState #if MODDING implements mods.IHook #end
 		}
 
 		return null;
+	}
+	
+	function videoCuts():Void
+	{
+	    inCutscene = true;
+
+		var background:FlxSprite = new FlxSprite(-200, -200).makeGraphic(2 * FlxG.width, 2 * FlxG.height, FlxColor.BLACK);
+		background.scrollFactor.set();
+		add(background);
+
+		var vid:FlxVideo = new FlxVideo(Paths.video(curSong.toLowerCase() + 'Cutscene'));
+		vid.finishCutscene = function()
+		{
+			remove(background);
+			FlxTween.tween(FlxG.camera, {zoom: defaultCamZoom}, (Conductor.crochet / 1000) * 5, {ease: FlxEase.quadInOut});
+			startCountdown();
+			cameraMovement();
+		}
 	}
 
 	function ughIntro():Void
@@ -1481,7 +1507,7 @@ class PlayState extends MusicBeatState #if MODDING implements mods.IHook #end
 		{
 		   tankCutscene.startSyncAudio = FlxG.sound.load(Paths.sound('song3censor'));
 		}
-		tankCutscene.startSyncFrame = 2;
+		tankCutscene.startSyncFrame = 3;
 		
 
 		new FlxTimer().start(14.8, function(dagfDemon:FlxTimer)
@@ -1541,60 +1567,6 @@ class PlayState extends MusicBeatState #if MODDING implements mods.IHook #end
 	        dad.visible = true;
 			gf.visible = true;
 		});										
-	}
-	
-	function loidIntro():Void
-	{
-		inCutscene = true;
-
-		var background:FlxSprite = new FlxSprite(-200, -200).makeGraphic(2 * FlxG.width, 2 * FlxG.height, FlxColor.BLACK);
-		background.scrollFactor.set();
-		add(background);
-
-		var vid:FlxVideo = new FlxVideo(Paths.video('loidcutscene'));
-		vid.finishCutscene = function()
-		{
-			remove(background);
-			FlxTween.tween(FlxG.camera, {zoom: defaultCamZoom}, (Conductor.crochet / 1000) * 5, {ease: FlxEase.quadInOut});
-			startCountdown();
-			cameraMovement();
-		}
-	}
-	
-	function enduIntro():Void
-	{
-		inCutscene = true;
-
-		var background:FlxSprite = new FlxSprite(-200, -200).makeGraphic(2 * FlxG.width, 2 * FlxG.height, FlxColor.BLACK);
-		background.scrollFactor.set();
-		add(background);
-
-		var vid:FlxVideo = new FlxVideo(Paths.video('endurancecutscene'));
-		vid.finishCutscene = function()
-		{
-			remove(background);
-			FlxTween.tween(FlxG.camera, {zoom: defaultCamZoom}, (Conductor.crochet / 1000) * 5, {ease: FlxEase.quadInOut});
-			startCountdown();
-			cameraMovement();
-		}
-	}
-	
-	function vocaIntro():Void
-	{
-		inCutscene = true;
-
-		var background:FlxSprite = new FlxSprite(-200, -200).makeGraphic(2 * FlxG.width, 2 * FlxG.height, FlxColor.BLACK);
-		background.scrollFactor.set();
-		add(background);
-
-		var vid:FlxVideo = new FlxVideo(Paths.video('vocacutscene'));
-		vid.finishCutscene = function()
-		{
-			remove(background);
-			FlxTween.tween(FlxG.camera, {zoom: defaultCamZoom}, (Conductor.crochet / 1000) * 5, {ease: FlxEase.quadInOut});
-			startCountdown();
-			cameraMovement();
-		}
 	}
 
     #if discord_rpc

@@ -30,6 +30,7 @@ class PreferencesMenu extends ui.OptionsState.Page
         add(items);
 
         createPrefItem("cutscenes", "cutscenes", true);
+        createPrefItem("FlxAnimate", "atlas", false);
         createPrefItem("naughtyness", "censor-naughty", true);
         createPrefItem("downscroll", "downscroll", false);
         createPrefItem("middlescroll", "middlescroll", false);
@@ -69,6 +70,7 @@ class PreferencesMenu extends ui.OptionsState.Page
     public static function initPrefs()
     {
         preferenceCheck("cutscenes", true);
+        preferenceCheck("atlas", true);
         preferenceCheck("censor-naughty", true);
         preferenceCheck("downscroll", false);
         preferenceCheck("middlescroll", false);
