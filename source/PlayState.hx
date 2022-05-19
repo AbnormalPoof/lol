@@ -2200,6 +2200,16 @@ class PlayState extends MusicBeatState #if MODDING implements mods.IHook #end
 		      boyfriend.bfbot = true;
         }
         
+        #if debug
+        if (FlxG.keys.pressed.C)
+            dad.playAnim('singLEFT');
+        if (FlxG.keys.pressed.V)
+            dad.playAnim('singDOWN');
+        if (FlxG.keys.pressed.B)
+            dad.playAnim('singUP');
+        if (FlxG.keys.pressed.N)
+            dad.playAnim('singRIGHT');
+        #end
 
 		iconP1.setGraphicSize(Std.int(CoolUtil.coolLerp(iconP1.width, 150, 0.15)));
 		iconP2.setGraphicSize(Std.int(CoolUtil.coolLerp(iconP1.width, 150, 0.15)));
@@ -2942,8 +2952,6 @@ class PlayState extends MusicBeatState #if MODDING implements mods.IHook #end
 			{
 				if (boyfriend.curCharacter != 'miku')
 				     boyfriend.playAnim('idle');
-				else
-				     boyfriend.dance();
 			}
 		}
 
@@ -3308,9 +3316,9 @@ class PlayState extends MusicBeatState #if MODDING implements mods.IHook #end
 			if (curBeat % 2 == 0)
 				boyfriend.playAnim('danceRight');
 		}
-		if (curBeat % 2 == 0 && boyfriend.curCharacter != 'miku')
+		if (curBeat % 2 == 0)
 		{
-			if (!boyfriend.animation.curAnim.name.startsWith("sing"))
+			if (!boyfriend.animation.curAnim.name.startsWith("sing") && boyfriend.curCharacter != 'miku')
 				boyfriend.playAnim('idle');
 			if (!dad.animation.curAnim.name.startsWith("sing"))
 				dad.dance();
@@ -3360,16 +3368,17 @@ class PlayState extends MusicBeatState #if MODDING implements mods.IHook #end
 
 		if (curBeat == 200 && curSong == 'Endurance')
 		{
+			camZooming = false;
 			light1.visible = true;
 			FlxTween.tween(bgblack, {alpha: 0}, 7.5, {ease: FlxEase.quartInOut});
-			FlxTween.tween(FlxG.camera, {zoom: defaultCamZoom + 0.3}, 0.2, {
+			FlxTween.tween(FlxG.camera, {zoom: defaultCamZoom * 1.3}, 0.2, {
 				ease: FlxEase.quadInOut
 			});
 		}
 
 		if (curBeat == 230 && curSong == 'Endurance')
 		{
-			FlxTween.tween(FlxG.camera, {zoom: 0.80}, 5.9, {
+			FlxTween.tween(FlxG.camera, {zoom: defaultCamZoom * 0.80}, 5.9, {
 				ease: FlxEase.quadInOut
 			});
 		}

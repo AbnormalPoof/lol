@@ -50,7 +50,7 @@ class AnimationDebug extends FlxState
 			add(dad);
 
 			char = dad;
-			dad.flipX = false;
+			dad.flipX = true;
 		}
 		else
 		{

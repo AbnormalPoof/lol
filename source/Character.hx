@@ -464,11 +464,6 @@ class Character extends FlxSprite
 				quickAnimAdd('singDOWN', 'Tankman DOWN note 0');
 				quickAnimAdd('singRIGHT', 'Tankman Note Left 0');
 				quickAnimAdd('singLEFT', 'Tankman Right Note 0');
-				quickAnimAdd('singRIGHTmiss', 'Tankman Note Left MISS');
-				quickAnimAdd('singLEFTmiss', 'Tankman Right Note MISS');
-
-				quickAnimAdd('singUPmiss', 'Tankman UP note MISS');
-				quickAnimAdd('singDOWNmiss', 'Tankman DOWN note MISS');
 				quickAnimAdd('singDOWN-alt', 'PRETTY GOOD'); // PRETTY GOOD
 				quickAnimAdd('singUP-alt', 'TANKMAN UGH'); // UGHHHHHHHH
 

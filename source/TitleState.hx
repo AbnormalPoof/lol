@@ -97,20 +97,10 @@ class TitleState extends MusicBeatState
 				StoryMenuState.weekUnlocked[0] = true;
 		}
 
-		#if FREEPLAY
-		FlxG.switchState(new FreeplayState());
-		#elseif CHARTING
-		FlxG.switchState(new ChartingState());
-		#elseif ANIMDEBUG
-		FlxG.switchState(new AnimationDebug());
-		#elseif CUTSCENE
-		FlxG.switchState(new CutsceneAnimTestState());
-		#else
 		new FlxTimer().start(1, function(tmr:FlxTimer)
 		{
 			startIntro();
 		});
-		#end
 
 		#if discord_rpc
 		DiscordClient.initialize();
@@ -233,6 +223,9 @@ class TitleState extends MusicBeatState
 	{
 		if (FlxG.sound.music != null)
 			Conductor.songPosition = FlxG.sound.music.time;
+			
+		if (FlxG.keys.justPressed.EIGHT)
+		    FlxG.switchState(new CutsceneAnimTestState());
 
 		if (FlxG.keys.justPressed.F)
 			FlxG.fullscreen = !FlxG.fullscreen;
