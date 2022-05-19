@@ -23,7 +23,7 @@ class LocaleHandler
 		if (tongue == null)
 			tongue = new FireTongue();
 
-		tongue.initialize({
+		tongue.init({
 			locale: locale,
 			directory: 'locales/',
 		});
