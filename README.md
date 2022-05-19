@@ -1,32 +1,9 @@
-![dot-engine-logo](assets/preload/images/dotArt.png)
+my dot engine sandbox thingy idk
 
-[Join the Dot-Engine Discord](https://www.discord.gg/u9B7qkkhtM)
 
-This is the repository for Friday Night Funkin, a game originally made for Ludum Dare 47 "Stuck In a Loop".
 
-[Play the Ludum Dare prototype](https://ninja-muffin24.itch.io/friday-night-funkin)
 
-[Play on Newgrounds](https://www.newgrounds.com/portal/view/770371) or [Support the project](https://ninja-muffin24.itch.io/funkin)
 
-## IF YOU MAKE A MOD AND DISTRIBUTE A MODIFIED / RECOMPILED VERSION, YOU MUST OPEN SOURCE YOUR MOD AS WELL
-
-## Credits / shoutouts
-
-- [ninjamuffin99 (me!)](https://twitter.com/ninja_muffin99) - Programmer
-- [PhantomArcade3K](https://twitter.com/phantomarcade3k) and [Evilsk8r](https://twitter.com/evilsk8r) - Art
-- [Kawaisprite](https://twitter.com/kawaisprite) - Musician
-
-This game was made with love to Newgrounds and it's community. Extra love to Tom Fulp.
-
-## Build instructions
-
-THESE INSTRUCTIONS ARE FOR COMPILING THE GAME'S SOURCE CODE!!!
-
-IF YOU WANT TO JUST DOWNLOAD AND INSTALL AND PLAY THE GAME NORMALLY, GO TO ITCH.IO TO DOWNLOAD THE GAME FOR PC, MAC, AND LINUX!!
-
-https://ninja-muffin24.itch.io/funkin
-
-IF YOU WANT TO COMPILE THE GAME YOURSELF, CONTINUE READING!!!
 
 ### Installing the Required Programs
 
@@ -54,25 +31,6 @@ You'll also need to install a couple things that involve Gits. To do this, you n
 5. Run `haxelib git firetongue https://github.com/Metlmeta/firetongue.git` to install Firetongue.
 
 You should have everything ready for compiling the game! Follow the guide below to continue!
-
-### Ignored files
-
-I gitignore the API keys for the game, so that no one can nab them and post fake high scores on the leaderboards. But because of that the game
-doesn't compile without it.
-
-Just make a file in `/source` and call it `APIStuff.hx`, and copy & paste this into it
-
-```haxe
-package;
-
-class APIStuff
-{
-	public static inline var API:String = "";
-	public static inline var EncKey:String = "";
-}
-```
-
-and you should be good to go there.
 
 ### Compiling game
 

@@ -8,11 +8,10 @@ on: [push, pull_request]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
+ # This workflow contains a single job called "build"
   build:
     # The type of runner that the job will run on
-    runs-on: windows-latest
-
+    runs-on: ubuntu-latest
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
@@ -21,10 +20,11 @@ jobs:
         with:
           haxe-version: 4.2.4
       # Runs a set of commands using the runners shell
-      - name: funny dependencies
+      - name: script run line haha
         run: |
-          cinst haxe --version 4.2.4 -y
-          RefreshEnv
+          sudo add-apt-repository ppa:haxe/releases -y
+          sudo apt-get update
+          sudo apt-get install gcc-multilib g++-multilib haxe -y
           mkdir "%HAXELIB_ROOT%"
           haxelib setup "%HAXELIB_ROOT%"
           haxelib install lime 7.9.0
