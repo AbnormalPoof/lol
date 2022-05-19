@@ -1371,7 +1371,7 @@ class PlayState extends MusicBeatState #if MODDING implements mods.IHook #end
 		
 		FlxG.camera.zoom *= 1.2;
 		camFollow.y += 100;
-		tankCutscene.animation.play('wellWellWell');
+		tankCutscene.playAnim('wellWellWell');
 
 		new FlxTimer().start(3, function(tmr:FlxTimer)
 		{
@@ -1394,7 +1394,7 @@ class PlayState extends MusicBeatState #if MODDING implements mods.IHook #end
 				camFollow.x -= 800;
 				camFollow.y -= 100;
 				FlxTween.tween(FlxG.camera, {zoom: defaultCamZoom * 1.2}, 0.5, {ease: FlxEase.quadInOut});
-				tankCutscene.animation.play('killYou');
+				tankCutscene.playAnim('killYou');
 				FlxG.sound.play(Paths.sound('killYou'));
 				
 				tankCutscene.onComplete = function()
@@ -1441,7 +1441,7 @@ class PlayState extends MusicBeatState #if MODDING implements mods.IHook #end
 		gfCutsceneLayer.add(tankCutscene);
 		tankCutscene.startSyncAudio = FlxG.sound.load(Paths.sound('tankSong2'));
 		tankCutscene.startSyncFrame = 4;
-		tankCutscene.animation.play();
+		tankCutscene.playAnim();
 
 		new FlxTimer().start(4.1, function(ugly:FlxTimer)
 		{
@@ -1529,7 +1529,7 @@ class PlayState extends MusicBeatState #if MODDING implements mods.IHook #end
 		
 		camFollow.setPosition(camPos.x, camPos.y);
 		camFollow.y += 100;
-		tankCutscene.animation.play('littleShit');
+		tankCutscene.playAnim('littleShit');
 		if (PreferencesMenu.getPref('censor-naughty'))
 		{
 		   tankCutscene.startSyncAudio = FlxG.sound.load(Paths.sound('stressCutscene'));
@@ -1559,8 +1559,8 @@ class PlayState extends MusicBeatState #if MODDING implements mods.IHook #end
 			boyfriend.alpha = 1.00001;
 			boyfriend.playAnim('bfCatch');	
 			gfDemon2.visible = true;
-			gfDemon2.animation.play('fix');
-			gfDemon2.animation.play('kill');
+			gfDemon2.playAnim('fix');
+			gfDemon2.playAnim('kill');
 		});	
 		new FlxTimer().start(18.3, function (idle:FlxTimer)
 			{
@@ -1568,11 +1568,11 @@ class PlayState extends MusicBeatState #if MODDING implements mods.IHook #end
 			});						
 		new FlxTimer().start(19.3, function(ahLookWhoIsIt:FlxTimer)
 			{
-				tankCutscene.animation.play('whoItIs');
+				tankCutscene.playAnim('whoItIs');
 			});	
 		new FlxTimer().start(20.5, function(dagfDemon:FlxTimer)
 			{
-				gfDemon2.animation.play('idle');
+				gfDemon2.playAnim('idle');
 			});			
 		new FlxTimer().start(20.1, function(daSmth:FlxTimer)	
 			{
