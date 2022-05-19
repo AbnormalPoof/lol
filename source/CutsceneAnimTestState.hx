@@ -27,9 +27,9 @@ class CutsceneAnimTestState extends FlxState
 		if (FlxG.keys.justPressed.SPACE)
 		{
 			if (!char.isPlaying)
-				char.playAnim();
+				char.animation.play('');
 			else
-				char.pauseAnim();
+				char.animation.pause();
 		}
 		
 		if (FlxG.keys.justPressed.BACKSPACE)
