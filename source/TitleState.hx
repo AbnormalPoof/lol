@@ -298,16 +298,15 @@ class TitleState extends MusicBeatState
 		if (pressedEnter && !skippedIntro && initialized)
 			skipIntro();
 
-		if (controls.UI_LEFT){
+		if (controls.UI_LEFT)
 			swagShader.update(-elapsed * 0.1);
-		}else if (controls.UI_RIGHT){
+		else if (controls.UI_RIGHT)
 			swagShader.update(elapsed * 0.1);
-		}
-	    if (controls.UI_UP){
+
+	    if (controls.UI_UP)
 	        FlxG.sound.music.pitch += 0.01;
-	    }else if (controls.UI_DOWN){
+	   else if (controls.UI_DOWN)
 	        FlxG.sound.music.pitch -= 0.01;
-	    }
 
 		super.update(elapsed);
 	}
