@@ -460,10 +460,10 @@ class Character extends FlxSprite
 				frames = Paths.getSparrowAtlas('characters/tankmanCaptain');
 
 				quickAnimAdd('idle', "Tankman Idle Dance");
-				quickAnimAdd('singUP', 'Tankman UP note 0');
-				quickAnimAdd('singDOWN', 'Tankman DOWN note 0');
-				quickAnimAdd('singRIGHT', 'Tankman Note Left 0');
-				quickAnimAdd('singLEFT', 'Tankman Right Note 0');
+				quickAnimAdd('singUP', 'Tankman UP note');
+				quickAnimAdd('singDOWN', 'Tankman DOWN note');
+				quickAnimAdd('singRIGHT', 'Tankman Note Left');
+				quickAnimAdd('singLEFT', 'Tankman Right Note');
 				quickAnimAdd('singDOWN-alt', 'PRETTY GOOD'); // PRETTY GOOD
 				quickAnimAdd('singUP-alt', 'TANKMAN UGH'); // UGHHHHHHHH
 

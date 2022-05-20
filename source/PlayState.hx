@@ -1722,11 +1722,9 @@ class PlayState extends MusicBeatState #if MODDING implements mods.IHook #end
 		botMode = false;
         
         if (storyWeek == 8)
-          if (curStage.startsWith('expo') && curStage.startsWith('concert') && curStage == 'endless') 
-           start.visible = true;
-		if (curSong == 'Chug' || curSong == 'Infinite' || curSong == 'sekai-wa-Mada-Hajimatte-sura-inai') {
-			start.animation.play('Secret');
-			new FlxTimer().start(3, function(tmr:FlxTimer)
+        {
+            start.visible = true;
+            new FlxTimer().start(3, function(tmr:FlxTimer)
 			{
 				FlxTween.tween(start,{alpha:0,x:start.x + 100},0.5,{ease:FlxEase.quartInOut,
 				onComplete:function(twn:FlxTween){
@@ -1734,31 +1732,16 @@ class PlayState extends MusicBeatState #if MODDING implements mods.IHook #end
 					}
 				});
 			});
-		}
-		else if (curSong == 'Tutorial-(Miku-Edition)')
-		{
-		    start.animation.play('Tutorial');
-		    new FlxTimer().start(3, function(tmr:FlxTimer)
-			{
-				FlxTween.tween(start,{alpha:0,x:start.x + 100},0.5,{ease:FlxEase.quartInOut,
-				onComplete:function(twn:FlxTween){
-					remove(start);
-					}
-				});
-			});
-		}
-		else if (storyWeek == 8)
-		{
-		start.animation.play(curSong);
-		new FlxTimer().start(3, function(tmr:FlxTimer)
-			{
-				FlxTween.tween(start,{alpha:0,x:start.x + 100},0.5,{ease:FlxEase.quartInOut,
-				onComplete:function(twn:FlxTween){
-					remove(start);
-					}
-				});
-			});
-		}
+            switch (curSong)
+            {
+              case 'Chug' | 'Infinite' | 'sekai-wa-Mada-Hajimatte-sura-inai' | 'Target-Practice':
+                  start.animation.play('Secret');
+              case 'Tutorial-(Miku-Edition)':
+                  start.animation.play('Tutorial');
+              default:
+                  start.animation.play(curSong);
+            }
+        }
 		if (curStage != 'endless' && !PreferencesMenu.getPref('middlescroll'))
 			generateStaticArrows(0);
 
@@ -2209,13 +2192,17 @@ class PlayState extends MusicBeatState #if MODDING implements mods.IHook #end
         if (controls.NOTE_RIGHT && boyfriend.bfbot)
             dad.playAnim('singRIGHT');
        
-        if (controls.UI_UP){
+        if (FlxG.keys.pressed.UP){
 	        FlxG.sound.music.pitch += 0.01;
 	        vocals.pitch += 0.01;
-	    }else if (controls.UI_DOWN){
+	    }else if (FlxG.keys.pressed.DOWN){
 	        FlxG.sound.music.pitch -= 0.01;
 	        vocals.pitch -= 0.01;
 	    }
+	    
+	    if (FlxG.sound.music.pitch == 0.01 && vocals.pitch == 0.01)
+	        FlxG.sound.music.pitch = 1;
+	        vocals.pitch = 1;
         #end
 
 		iconP1.setGraphicSize(Std.int(CoolUtil.coolLerp(iconP1.width, 150, 0.15)));
