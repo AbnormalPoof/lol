@@ -1515,7 +1515,6 @@ class PlayState extends MusicBeatState #if MODDING implements mods.IHook #end
 		gfDemon2.y = 390;
 		gfDemon2.x = 465;
 		fixLayer.add(gfDemon2);
-		gfDemon2.playAnim();
 
 		gfDemon = new FlxAnimate(400, 130, Paths.getTextureAtlas('gfDemon'));
 		gfDemon.antialiasing = true;
@@ -1539,7 +1538,7 @@ class PlayState extends MusicBeatState #if MODDING implements mods.IHook #end
 		{
 		   tankCutscene.startSyncAudio = FlxG.sound.load(Paths.sound('song3censor'));
 		}
-		tankCutscene.startSyncFrame = 3;
+		tankCutscene.startSyncFrame = 4;
 		
 
 		new FlxTimer().start(14.8, function(dagfDemon:FlxTimer)
@@ -2201,13 +2200,13 @@ class PlayState extends MusicBeatState #if MODDING implements mods.IHook #end
         }
         
         #if debug
-        if (FlxG.keys.pressed.C)
+        if (controls.NOTE_LEFT && boyfriend.bfbot)
             dad.playAnim('singLEFT');
-        if (FlxG.keys.pressed.V)
+        if (controls.NOTE_DOWN && boyfriend.bfbot)
             dad.playAnim('singDOWN');
-        if (FlxG.keys.pressed.B)
+        if (controls.NOTE_UP && boyfriend.bfbot)
             dad.playAnim('singUP');
-        if (FlxG.keys.pressed.N)
+        if (controls.NOTE_RIGHT && boyfriend.bfbot)
             dad.playAnim('singRIGHT');
         #end
 

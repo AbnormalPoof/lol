@@ -15,14 +15,11 @@ import flixel.math.FlxRect;
 import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
 import openfl.Assets;
+import flixel.FlxG;
 import shadersLmfao.ColorSwap;
 import ui.AtlasText;
 
 using StringTools;
-#if ANIMDEBUG
-import ui.AnimationDebug;
-#end
-
 
 #if discord_rpc
 import Discord.DiscordClient;
@@ -116,6 +113,7 @@ class TitleState extends MusicBeatState
 	var gfDance:FlxSprite;
 	var danceLeft:Bool = false;
 	var titleText:FlxSprite;
+	var mikuDance:FlxSprite;
 
 	function startIntro()
 	{
@@ -163,6 +161,14 @@ class TitleState extends MusicBeatState
 		add(gfDance);
 		gfDance.shader = swagShader.shader;
 		add(logo);
+		
+		mikuDance = new FlxSprite(FlxG.width * 0.5, FlxG.height * 0.08);
+		mikuDance.frames = Paths.getSparrowAtlas('mikuDance');
+		mikuDance.animation.addByIndices('danceLeft', 'gfDance', [30, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14], "", 24, false);
+		mikuDance.animation.addByIndices('danceRight', 'gfDance', [15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29], "", 24, false);
+		mikuDance.antialiasing = true;
+		add(mikuDance);
+		mikuDance.shader = swagShader.shader;
 
 		titleText = new FlxSprite(100, FlxG.height * 0.8);
 		titleText.frames = Paths.getSparrowAtlas('titleEnter');
@@ -265,12 +271,14 @@ class TitleState extends MusicBeatState
 			if (titleText != null)
 				titleText.animation.play('press');
 
+			FlxG.sound.music.pitch = 1;
 			FlxG.camera.flash(FlxColor.WHITE, 1);
 			FlxG.sound.play(Paths.sound('confirmMenu'), 0.7);
 			transitioning = true;
 
 			Assets.cache.clear(Paths.loadImage('dotArt').key);
 			Assets.cache.clear(Paths.loadImage('gfDanceTitle').key);
+			Assets.cache.clear(Paths.loadImage('mikuDance').key);
 			Assets.cache.clear(Paths.loadImage('logoBumpin').key);
 			Assets.cache.clear(Paths.loadImage('titleEnter').key);
 
@@ -290,10 +298,16 @@ class TitleState extends MusicBeatState
 		if (pressedEnter && !skippedIntro && initialized)
 			skipIntro();
 
-		if (controls.UI_LEFT)
+		if (controls.UI_LEFT){
 			swagShader.update(-elapsed * 0.1);
-		else if (controls.UI_RIGHT)
+		}else if (controls.UI_RIGHT){
 			swagShader.update(elapsed * 0.1);
+		}
+	    if (controls.UI_UP){
+	        FlxG.sound.music.pitch += 0.01;
+	    }else if (controls.UI_DOWN){
+	        FlxG.sound.music.pitch -= 0.01;
+	    }
 
 		super.update(elapsed);
 	}
@@ -328,6 +342,7 @@ class TitleState extends MusicBeatState
 		danceLeft = !danceLeft;
 
 		danceLeft ? gfDance.animation.play('danceRight') : gfDance.animation.play('danceLeft');
+		danceLeft ? mikuDance.animation.play('danceRight') : mikuDance.animation.play('danceLeft');
 
 		if (lastBeat < curBeat)
 		{
