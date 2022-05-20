@@ -2208,6 +2208,14 @@ class PlayState extends MusicBeatState #if MODDING implements mods.IHook #end
             dad.playAnim('singUP');
         if (controls.NOTE_RIGHT && boyfriend.bfbot)
             dad.playAnim('singRIGHT');
+       
+        if (controls.UI_UP){
+	        FlxG.sound.music.pitch += 0.01;
+	        vocals.pitch += 0.01;
+	    }else if (controls.UI_DOWN){
+	        FlxG.sound.music.pitch -= 0.01;
+	        vocals.pitch -= 0.01;
+	    }
         #end
 
 		iconP1.setGraphicSize(Std.int(CoolUtil.coolLerp(iconP1.width, 150, 0.15)));
@@ -2238,9 +2246,9 @@ class PlayState extends MusicBeatState #if MODDING implements mods.IHook #end
 		if (FlxG.keys.justPressed.ONE)
 			endSong();
 
-		if (FlxG.keys.justPressed.PAGEUP)
+		if (FlxG.keys.justPressed.B)
 			changeSection(1);
-		else if (FlxG.keys.justPressed.PAGEDOWN)
+		else if (FlxG.keys.justPressed.V)
 			changeSection(-1);
 
 		if (FlxG.keys.justPressed.EIGHT)
