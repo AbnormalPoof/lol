@@ -2557,11 +2557,15 @@ class PlayState extends MusicBeatState #if MODDING implements mods.IHook #end
 				FlxG.save.data.weekUnlocked = StoryMenuState.weekUnlocked;
 				FlxG.save.flush();
 				botMode = false;
+				FlxG.sound.music.pitch = 1;
+	            vocals.pitch = 1;
 			}
 			else
 			{
 				trace('LOADING NEXT SONG');
 				botMode = false;
+				FlxG.sound.music.pitch = 1;
+	            vocals.pitch = 1;
 
 				FlxTransitionableState.skipNextTransIn = true;
 				FlxTransitionableState.skipNextTransOut = true;
