@@ -2241,6 +2241,10 @@ class PlayState extends MusicBeatState #if MODDING implements mods.IHook #end
 
 		if (FlxG.keys.justPressed.EIGHT)
 			FlxG.switchState(new AnimationDebug(SONG.player2));
+		if (FlxG.keys.justPressed.SIX)
+			FlxG.switchState(new AnimationDebug(SONG.player1));
+		if (FlxG.keys.justPressed.N)
+			FlxG.switchState(new AnimationDebug(SONG.gf));
 		#end
 
 		if (generatedMusic && SONG.notes[storyDifficulty][Std.int(curStep / 16)] != null)
