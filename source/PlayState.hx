@@ -2043,8 +2043,6 @@ class PlayState extends MusicBeatState #if MODDING implements mods.IHook #end
 	{
 		FlxG.camera.followLerp = CoolUtil.camLerpShit(0.04);
         
-        if (FlxG.keys.justPressed.H)
-			camHUD.visible = !camHUD.visible;
 		if (FlxG.keys.justPressed.K)
 		{
 			// FlxScreenGrab.grab(null, true, true);
@@ -2200,11 +2198,14 @@ class PlayState extends MusicBeatState #if MODDING implements mods.IHook #end
 	        vocals.pitch -= 0.01;
 	    }
 	    
-	    if (FlxG.sound.music.pitch == 0.01 && vocals.pitch == 0.01)
+	    if (FlxG.keys.justPressed.J)
 	        FlxG.sound.music.pitch = 1;
 	        vocals.pitch = 1;
         #end
-
+        
+        if (FlxG.keys.justPressed.D && boyfriend.bfbot)
+			camHUD.visible = !camHUD.visible;
+        
 		iconP1.setGraphicSize(Std.int(CoolUtil.coolLerp(iconP1.width, 150, 0.15)));
 		iconP2.setGraphicSize(Std.int(CoolUtil.coolLerp(iconP1.width, 150, 0.15)));
 
