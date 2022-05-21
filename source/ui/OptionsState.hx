@@ -7,6 +7,8 @@ import flixel.util.FlxSignal.FlxTypedSignal;
 import haxe.ds.EnumValueMap;
 import ui.Prompt.NgPrompt;
 import ui.MenuTypedList.TextMenuList;
+import flixel.util.FlxSave;
+import ui.PreferencesMenu;
 
 #if newgrounds
 import io.newgrounds.NG;
@@ -35,7 +37,7 @@ class OptionsState extends MusicBeatState
 {
 	var currentName:PageName = Options;
 	var pages:EnumValueMap<PageName, Page> = new EnumValueMap<PageName, Page>();
-
+	
 	public override function create()
 	{
 		#if discord_rpc
@@ -66,7 +68,9 @@ class OptionsState extends MusicBeatState
 
 		if (optionsPage.hasMultipleOptions())
 		{
-			optionsPage.onExit.add(exitToMainMenu);
+			optionsPage.onExit.add(function() {
+			    FlxG.switchState(new MainMenuState());
+			});
 
 			controlsPage.onExit.add(function() {
 				switchPage(Options);
@@ -215,6 +219,7 @@ class Page extends FlxGroup
 	{
 		return val == enabled;
 	}
+	
 
 	public function openPrompt(target:FlxSubState, ?openCallback:Void->Void)
 	{

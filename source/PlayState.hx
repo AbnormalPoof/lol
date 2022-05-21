@@ -2645,7 +2645,7 @@ class PlayState extends MusicBeatState #if MODDING implements mods.IHook #end
 		Net.send('addScore', score);
 
 		// TODO: Add Note Skins and Special Notes (Burning etc).
-		if (isSick)
+		if (isSick && PreferencesMenu.getPref("noteSplash"))
 		{
 			var noteSplash:NoteSplash = grpNoteSplashes.recycle(NoteSplash);
 			noteSplash.setupNoteSplash(daNote.x, daNote.y, daNote.noteData);

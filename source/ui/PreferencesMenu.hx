@@ -32,6 +32,7 @@ class PreferencesMenu extends ui.OptionsState.Page
         createPrefItem("cutscenes", "cutscenes", true);
         createPrefItem("FlxAnimate", "atlas", false);
         createPrefItem("naughtyness", "censor-naughty", true);
+        createPrefItem("Note Splashes", "noteSplash", false);
         createPrefItem("downscroll", "downscroll", false);
         createPrefItem("middlescroll", "middlescroll", false);
         createPrefItem("flashing menu", "flashing-menu", false);
@@ -72,6 +73,7 @@ class PreferencesMenu extends ui.OptionsState.Page
         preferenceCheck("cutscenes", true);
         preferenceCheck("atlas", true);
         preferenceCheck("censor-naughty", true);
+        preferenceCheck("noteSplash", true);
         preferenceCheck("downscroll", false);
         preferenceCheck("middlescroll", false);
         preferenceCheck("flashing-menu", true);
