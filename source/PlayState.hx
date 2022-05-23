@@ -1335,13 +1335,18 @@ class PlayState extends MusicBeatState #if MODDING implements mods.IHook #end
 	    FlxG.sound.music.stop();
 	    video.finishCallback = function()
 	    {
-		    if (end == true)
+		    if (atend == true)
 		    {
-			    SONG = Song.loadFromJson(storyPlaylist[0].toLowerCase());
-			    FlxG.switchState(new PlayState());
+			    if (storyPlaylist.length <= 0)
+				    FlxG.switchState(new StoryMenuState());
+			    else
+			    {
+				    SONG = Song.loadFromJson(storyPlaylist[0].toLowerCase());
+				    FlxG.switchState(new PlayState());
+			    }
 		    }
 		    else
-	            startCountdown();
+		    	startCountdown();
 	    }
 	    video.playVideo(Paths.video(name));
 	    #else
