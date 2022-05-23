@@ -1097,6 +1097,7 @@ class PlayState extends MusicBeatState #if MODDING implements mods.IHook #end
 		iconP1.cameras = [camHUD];
 		iconP2.cameras = [camHUD];
 		scoreTxt.cameras = [camHUD];
+		grpNoteSplashes.cameras = [camHUD];
 		if (curSong == 'Voca' && curStage == 'expo-two')
 		{
 			light1.cameras = [camHUD];
@@ -2665,46 +2666,48 @@ class PlayState extends MusicBeatState #if MODDING implements mods.IHook #end
 		if (!practiceMode)
 			songScore += score;
 
-		var rating:FlxSprite = new FlxSprite();
-		var ratingPath:String = daRating;
-
-		if (curStage.startsWith('school'))
-			ratingPath = "pixelUI/" + ratingPath + "-pixel";
-
-		rating.loadGraphic(Paths.image(ratingPath));
-		rating.x = FlxG.width * 0.55 - 40;
-		// Make sure rating is visible lol!
-		if (rating.x < FlxG.camera.scroll.x)
-			rating.x = FlxG.camera.scroll.x;
-		else if (rating.x > FlxG.camera.scroll.x + FlxG.camera.width - rating.width)
-			rating.x = FlxG.camera.scroll.x + FlxG.camera.width - rating.width;
-
-		rating.y = FlxG.camera.scroll.y + FlxG.camera.height * 0.4 - 60;
-		rating.acceleration.y = 550;
-		rating.velocity.y -= FlxG.random.int(140, 175);
-		rating.velocity.x -= FlxG.random.int(0, 10);
-
-		add(rating);
-
-		if (curStage.startsWith('school'))
-			rating.setGraphicSize(Std.int(rating.width * daPixelZoom * 0.7));
-		else
+		
+		if (camHUD.visible != false)
 		{
-			rating.setGraphicSize(Std.int(rating.width * 0.7));
-			rating.antialiasing = true;
+		    var rating:FlxSprite = new FlxSprite();
+		    var ratingPath:String = daRating;
+
+		    if (curStage.startsWith('school'))
+			    ratingPath = "pixelUI/" + ratingPath + "-pixel";
+
+		    rating.loadGraphic(Paths.image(ratingPath));
+		    rating.x = FlxG.width * 0.55 - 40;
+		    if (rating.x < FlxG.camera.scroll.x)
+			    rating.x = FlxG.camera.scroll.x;
+		    else if (rating.x > FlxG.camera.scroll.x + FlxG.camera.width - rating.width)
+			    rating.x = FlxG.camera.scroll.x + FlxG.camera.width - rating.width;
+
+		    rating.y = FlxG.camera.scroll.y + FlxG.camera.height * 0.4 - 60;
+		    rating.acceleration.y = 550;
+		    rating.velocity.y -= FlxG.random.int(140, 175);
+		    rating.velocity.x -= FlxG.random.int(0, 10);
+
+		    add(rating);
+
+		    if (curStage.startsWith('school'))
+			    rating.setGraphicSize(Std.int(rating.width * daPixelZoom * 0.7));
+		    else
+		    {
+			    rating.setGraphicSize(Std.int(rating.width * 0.7));
+			    rating.antialiasing = true;
+		    }
+		    rating.updateHitbox();
+
+		    FlxTween.tween(rating, {alpha: 0}, 0.2, {
+			    onComplete: function(tween:FlxTween)
+			    {
+				    rating.destroy();
+			    },
+			    startDelay: Conductor.crochet * 0.001
+		    });
+
+		    displayCombo();
 		}
-		rating.updateHitbox();
-
-		FlxTween.tween(rating, {alpha: 0}, 0.2, {
-			onComplete: function(tween:FlxTween)
-			{
-				rating.destroy();
-			},
-			startDelay: Conductor.crochet * 0.001
-		});
-
-		if (combo >= 10 || combo == 0)
-			displayCombo();
 	}
 
 	function displayCombo():Void

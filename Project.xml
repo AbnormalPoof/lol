@@ -211,7 +211,7 @@
 	<!-- <haxedef name="SKIP_TO_PLAYSTATE" if="debug" /> -->
 	<haxedef name="LOCALSHIT" if="debug" />
 	<haxedef name="CAN_CHEAT" if="switch debug" />
-	<haxedef name="MODDING"/>
+	<haxedef name="MODDING" if="cpp"/>
 	<haxedef name="VIDEOS" if="cpp" />
 
 	<!-- Polymod -->
