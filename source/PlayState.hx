@@ -186,7 +186,6 @@ class PlayState extends MusicBeatState #if MODDING implements mods.IHook #end
 
 		FlxG.sound.cache(Paths.inst(PlayState.SONG.song));
 		FlxG.sound.cache(Paths.voices(PlayState.SONG.song));
-		// Assets.cache.set('tanky', IMAGE, Paths.image('atlases/leTank/tank1/spritemap1'));
 		
 		camGame = new SwagCamera();
 		camHUD = new FlxCamera();
@@ -2032,8 +2031,10 @@ class PlayState extends MusicBeatState #if MODDING implements mods.IHook #end
 
 		vocals.pause();
 		FlxG.sound.music.play();
+		#if !debug
 		Conductor.songPosition = FlxG.sound.music.time + Conductor.offset;
-
+        #end
+        
 		if (vocalsFinished)
 			return;
 

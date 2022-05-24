@@ -50,7 +50,7 @@ class AnimationDebug extends FlxState
 			add(dad);
 
 			char = dad;
-			dad.flipX = true;
+			dad.flipX = false;
 		}
 		else
 		{
@@ -173,6 +173,9 @@ class AnimationDebug extends FlxState
 		var multiplier = 1;
 		if (holdShift)
 			multiplier = 10;
+			
+		if (FlxG.keys.justPressed.BACKSPACE)
+		   FlxG.switchState(new PlayState());
 
 		if (upP || rightP || downP || leftP)
 		{

@@ -206,7 +206,10 @@ class Character extends FlxSprite
 				quickAnimAdd('singDOWNmiss', 'Pico Down Note MISS');
 				quickAnimAdd('singDOWN-alt', 'Pico Down Shoot0');
 
-				loadOffsetFile(curCharacter);
+				if (!isPlayer)
+				    loadOffsetFile(curCharacter);
+				else
+				    loadOffsetFile('picoPlayer');
 
 				playAnim('idle');
 
