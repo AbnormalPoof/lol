@@ -480,7 +480,7 @@ class Character extends FlxSprite
 				
 				animation.addByIndices('danceLeft','Miku idle dance',[31,0,1,2,3,4,5,6,7,8,9,10,11,12,13,14], '', 24, false);
 				animation.addByIndices('danceRight','Miku idle dance',[15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30], '', 24, false);
-				quickAnimAdd('singUP', 'Miku Sing Note UP0';
+				quickAnimAdd('singUP', 'Miku Sing Note UP0');
 				quickAnimAdd('singDOWN', 'Miku Sing Note DOWN0');
 				quickAnimAdd('singLEFT', 'Miku Sing Note LEFT0');
 				quickAnimAdd('singRIGHT', 'Miku Sing Note RIGHT0');
@@ -503,7 +503,7 @@ class Character extends FlxSprite
 				
 				animation.addByIndices('danceLeft','Miku idle dance',[31,0,1,2,3,4,5,6,7,8,9,10,11,12,13,14], '', 24, false);
 				animation.addByIndices('danceRight','Miku idle dance',[15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30], '', 24, false);
-				quickAnimAdd('singUP', 'Miku Sing Note UP0';
+				quickAnimAdd('singUP', 'Miku Sing Note UP0');
 				quickAnimAdd('singDOWN', 'Miku Sing Note DOWN0');
 				quickAnimAdd('singLEFT', 'Miku Sing Note LEFT0');
 				quickAnimAdd('singRIGHT', 'Miku Sing Note RIGHT0');

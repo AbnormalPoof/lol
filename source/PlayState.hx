@@ -1771,11 +1771,9 @@ class PlayState extends MusicBeatState #if MODDING implements mods.IHook #end
 			{
 				if (!boyfriend.animation.curAnim.name.startsWith("sing") && boyfriend.curCharacter != 'miku')
 					boyfriend.playAnim('idle');
-				if (!dad.animation.curAnim.name.startsWith("sing"))
-					dad.dance();
 			}
-			else if (dad.hasRightAndLeft() && !dad.animation.curAnim.name.startsWith("sing"))
-				dad.dance();
+			if (!dad.animation.curAnim.name.startsWith("sing"))
+					dad.dance();
 			if (generatedMusic)
 				notes.sort(sortNotes, FlxSort.DESCENDING);
 
@@ -3042,7 +3040,10 @@ class PlayState extends MusicBeatState #if MODDING implements mods.IHook #end
             {
                 boyfriend.animation.finishCallback = (animationName:String)->{
                   if (animationName == "singUP" || animationName == "singDOWN" || animationName == "singLEFT" || animationName == "singRIGHT"){
-                     boyfriend.playAnim('idle');
+                     if (boyfriend.curCharacter != 'miku')
+                         boyfriend.playAnim('idle');
+                     else
+                         boyfriend.dance();
                    }
                 };
                 playerStrums.members[note.noteData].animation.finishCallback = (animationName:String)->{
@@ -3326,18 +3327,14 @@ class PlayState extends MusicBeatState #if MODDING implements mods.IHook #end
 			if (curBeat % 2 == 0)
 				boyfriend.playAnim('danceRight');
 		}
-		if (curBeat % 2 == 0)
+		else if (curBeat % 2 == 0)
 		{
-			if (!boyfriend.animation.curAnim.name.startsWith("sing") && boyfriend.curCharacter != 'miku')
+			if (!boyfriend.animation.curAnim.name.startsWith("sing"))
 				boyfriend.playAnim('idle');
-			if (!dad.animation.curAnim.name.startsWith("sing"))
-				dad.dance();
 		}
-		else if (dad.hasRightAndLeft())
-		{
-			if (!dad.animation.curAnim.name.startsWith("sing"))
+	    
+	    if (!dad.animation.curAnim.name.startsWith("sing"))
 				dad.dance();
-		}
 
 		if (curBeat % 8 == 7 && curSong == 'Bopeebo')
 			boyfriend.playAnim('hey', true);

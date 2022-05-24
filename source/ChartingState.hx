@@ -212,7 +212,7 @@ class ChartingState extends MusicBeatState
 		var stepperSpeed:FlxUINumericStepper = new FlxUINumericStepper(10, 80, 0.1, _song.speed[PlayState.storyDifficulty], -999, 999, 1);
 		stepperSpeed.name = 'song_speed';
 
-		var stepperBPM:FlxUINumericStepper = new FlxUINumericStepper(10, 65, 0.1, Conductor.bpm, 0.1, 339, 1);
+		var stepperBPM:FlxUINumericStepper = new FlxUINumericStepper(10, 65, 0.1, Conductor.bpm, 0.1, 999999999999999999999999999, 1);
 		stepperBPM.name = 'song_bpm';
 
 		var characters:Array<String> = CoolUtil.coolTextFile(Paths.txt('characterList'));
