@@ -480,25 +480,20 @@ class Character extends FlxSprite
 				
 				animation.addByIndices('danceLeft','Miku idle dance',[31,0,1,2,3,4,5,6,7,8,9,10,11,12,13,14], '', 24, false);
 				animation.addByIndices('danceRight','Miku idle dance',[15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30], '', 24, false);
-				animation.addByPrefix('idle','Miku idle dance', 24, false);
-				animation.addByPrefix('singUP', 'Miku Sing Note UP0', 24, false);
-				animation.addByPrefix('singDOWN', 'Miku Sing Note DOWN0', 24, false);
-				animation.addByPrefix('singLEFT', 'Miku Sing Note LEFT0', 24, false);
-				animation.addByPrefix('singRIGHT', 'Miku Sing Note RIGHT0', 24, false);
-				animation.addByPrefix('singUPmiss', 'Miku Sing Note UP MISS', 24, false);
-				animation.addByPrefix('singDOWNmiss', 'Miku Sing Note DOWN MISS', 24, false);
-				animation.addByPrefix('singLEFTmiss', 'Miku Sing Note LEFT MISS', 24, false);
-				animation.addByPrefix('singRIGHTmiss', 'Miku Sing Note RIGHT MISS', 24, false);
-				animation.addByPrefix('hey', 'miku hey', 24, false);
-				animation.addByPrefix('firstDeath', "firstDeath", 24, false);
-				animation.addByPrefix('deathLoop', "deathLoop", 24, false);
-				animation.addByPrefix('deathConfirm', "deathConfirm", 24, false);
-
+				quickAnimAdd('singUP', 'Miku Sing Note UP0';
+				quickAnimAdd('singDOWN', 'Miku Sing Note DOWN0');
+				quickAnimAdd('singLEFT', 'Miku Sing Note LEFT0');
+				quickAnimAdd('singRIGHT', 'Miku Sing Note RIGHT0');
+				quickAnimAdd('singUPmiss', 'Miku Sing Note UP MISS');
+				quickAnimAdd('singDOWNmiss', 'Miku Sing Note DOWN MISS');
+				quickAnimAdd('singLEFTmiss', 'Miku Sing Note LEFT MISS');
+				quickAnimAdd('singRIGHTmiss', 'Miku Sing Note RIGHT MISS');
+				quickAnimAdd('hey', 'miku hey');
 				loadOffsetFile(curCharacter);
 				
 				if (isPlayer)
 				{
-				  y -= 380;
+				  y -= 360;
 				}
 
 				playAnim('danceLeft');
@@ -508,13 +503,10 @@ class Character extends FlxSprite
 				
 				animation.addByIndices('danceLeft','Miku idle dance',[31,0,1,2,3,4,5,6,7,8,9,10,11,12,13,14], '', 24, false);
 				animation.addByIndices('danceRight','Miku idle dance',[15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30], '', 24, false);
-				animation.addByPrefix('singUP', 'Miku Sing Note UP0', 24, false);
-				animation.addByPrefix('singDOWN', 'Miku Sing Note DOWN0', 24, false);
-				animation.addByPrefix('singLEFT', 'Miku Sing Note LEFT0', 24, false);
-				animation.addByPrefix('singRIGHT', 'Miku Sing Note RIGHT0', 24, false);
-				animation.addByPrefix('firstDeath', "firstDeath", 24, false);
-				animation.addByPrefix('deathLoop', "deathLoop", 24, false);
-				animation.addByPrefix('deathConfirm', "deathConfirm", 24, false);
+				quickAnimAdd('singUP', 'Miku Sing Note UP0';
+				quickAnimAdd('singDOWN', 'Miku Sing Note DOWN0');
+				quickAnimAdd('singLEFT', 'Miku Sing Note LEFT0');
+				quickAnimAdd('singRIGHT', 'Miku Sing Note RIGHT0');
 
 				loadOffsetFile(curCharacter);
 
@@ -535,22 +527,15 @@ class Character extends FlxSprite
 			case 'bf-voca':
 				frames = Paths.getSparrowAtlas('characters/voca_bf');
 
-				animation.addByPrefix('idle', 'BF idle dance', 24, false);
-				animation.addByPrefix('singUP', 'BF NOTE UP0', 24, false);
-				animation.addByPrefix('singLEFT', 'BF NOTE LEFT0', 24, false);
-				animation.addByPrefix('singRIGHT', 'BF NOTE RIGHT0', 24, false);
-				animation.addByPrefix('singDOWN', 'BF NOTE DOWN0', 24, false);
-				animation.addByPrefix('singUPmiss', 'BF NOTE UP MISS', 24, false);
-				animation.addByPrefix('singLEFTmiss', 'BF NOTE LEFT MISS', 24, false);
-				animation.addByPrefix('singRIGHTmiss', 'BF NOTE RIGHT MISS', 24, false);
-				animation.addByPrefix('singDOWNmiss', 'BF NOTE DOWN MISS', 24, false);
-				animation.addByPrefix('hey', 'BF HEY', 24, false);
-
-				animation.addByPrefix('firstDeath', "BF dies", 24, false);
-				animation.addByPrefix('deathLoop', "BF Dead Loop", 24, false);
-				animation.addByPrefix('deathConfirm', "BF Dead confirm", 24, false);
-
-				animation.addByPrefix('scared', 'BF idle shaking', 24);
+				quickAnimAdd('idle', 'BF idle dance');
+				quickAnimAdd('singUP', 'BF NOTE UP0');
+				quickAnimAdd('singLEFT', 'BF NOTE LEFT0');
+				quickAnimAdd('singRIGHT', 'BF NOTE RIGHT0');
+				quickAnimAdd('singDOWN', 'BF NOTE DOWN0');
+				quickAnimAdd('singUPmiss', 'BF NOTE UP MISS');
+				quickAnimAdd('singLEFTmiss', 'BF NOTE LEFT MISS');
+				quickAnimAdd('singRIGHTmiss', 'BF NOTE RIGHT MISS');
+				quickAnimAdd('singDOWNmiss', 'BF NOTE DOWN MISS');
 
 				loadOffsetFile(curCharacter);
 
@@ -584,11 +569,11 @@ class Character extends FlxSprite
 				playAnim('danceRight');
 			case 'tricky':
 				frames = Paths.getSparrowAtlas('characters/tricky_miku_assets');
-				animation.addByPrefix('idle', 'Idle', 24);
-				animation.addByPrefix('singUP', 'Sing Up', 24);
-				animation.addByPrefix('singRIGHT', 'Sing Right', 24);
-				animation.addByPrefix('singDOWN', 'Sing Down', 24);
-				animation.addByPrefix('singLEFT', 'Sing Left', 24);
+				quickAnimAdd('idle', "Idle");
+				quickAnimAdd('singUP', 'Sing Up');
+				quickAnimAdd('singDOWN', 'Sing Down');
+				quickAnimAdd('singLEFT', 'Sing Left');
+				quickAnimAdd('singRIGHT', 'Sing Right');
 
 				loadOffsetFile(curCharacter);
 				playAnim('idle');
