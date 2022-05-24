@@ -2031,9 +2031,7 @@ class PlayState extends MusicBeatState #if MODDING implements mods.IHook #end
 
 		vocals.pause();
 		FlxG.sound.music.play();
-		#if !debug
 		Conductor.songPosition = FlxG.sound.music.time + Conductor.offset;
-        #end
         
 		if (vocalsFinished)
 			return;
