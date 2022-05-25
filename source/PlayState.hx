@@ -855,6 +855,9 @@ class PlayState extends MusicBeatState #if MODDING implements mods.IHook #end
 			case 'pico':
 				camPos.x += 600;
 				dad.y += 300;
+		    case 'darnell':
+				camPos.x += 650;
+				dad.y += 300;
 			case 'parents-christmas':
 				dad.x -= 500;
 			case 'monika':
@@ -2852,6 +2855,8 @@ class PlayState extends MusicBeatState #if MODDING implements mods.IHook #end
 					camFollow.y = boyfriend.getMidpoint().y - 200;
 			}
 
+			if (boyfriend.curCharacter == 'pico' && curStage == 'philly')
+			   camFollow.x = boyfriend.getMidpoint().x - 300;
 			if (SONG.song.toLowerCase() == 'tutorial')
 				tweenCamIn();
 		}

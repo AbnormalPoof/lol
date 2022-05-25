@@ -3,6 +3,7 @@ Tutorial 0
 Bopeebo 1
 Fresh 1
 Dadbattle 1
+Dadbattle-Erect 1
 ////// Week 2 //////
 Spookeez 2
 South 2
@@ -11,6 +12,9 @@ Monster 2
 Pico 3
 Philly 3
 Blammed 3
+Darnell 3
+Lit-Up 3
+2HOT 3
 ////// Week 4 //////
 Satin-Panties 4
 High 4

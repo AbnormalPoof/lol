@@ -577,6 +577,25 @@ class Character extends FlxSprite
 
 				loadOffsetFile(curCharacter);
 				playAnim('idle');
+			case 'darnell':
+				frames = Paths.getSparrowAtlas('characters/darnell');
+				quickAnimAdd('idle', "darnell idle");
+				quickAnimAdd('singUP', 'darnell up');
+				quickAnimAdd('singDOWN', 'darnell down');
+				quickAnimAdd('singLEFT', 'darnell left');
+				quickAnimAdd('singRIGHT', 'darnell right');
+
+				loadOffsetFile(curCharacter);					
+				playAnim('idle');
+			case 'nene':
+				frames = Paths.getSparrowAtlas('characters/nene');
+				animation.addByIndices('sad', ' nene chillin', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], "", 24, true);
+				animation.addByIndices('danceLeft', ' nene chillin', [30, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14], "", 24, false);
+				animation.addByIndices('danceRight', ' nene chillin', [15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29], "", 24, false);
+
+				loadOffsetFile('gf');
+
+				playAnim('danceRight');
 			default:
 				// You can easyly place something lik trickman
 				frames = Paths.getSparrowAtlas('characters/$curCharacter');
