@@ -431,7 +431,7 @@ class AnimationDebug extends MusicBeatState
 		if (FlxG.keys.justPressed.Y)
 			saveBoyOffsets();
 
-		if (FlxG.keys.justPressed.F1)
+		if (FlxG.keys.justPressed.ONE)
 			FlxG.save.data.showHelp = !FlxG.save.data.showHelp;
 
 		helpText.visible = FlxG.save.data.showHelp;
