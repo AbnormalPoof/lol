@@ -856,8 +856,9 @@ class PlayState extends MusicBeatState #if MODDING implements mods.IHook #end
 				camPos.x += 600;
 				dad.y += 300;
 		    case 'darnell':
-				camPos.x += 650;
-				dad.y += 300;
+				camPos.x += 670;
+				dad.y += 350;
+				dad.x += 50;
 			case 'parents-christmas':
 				dad.x -= 500;
 			case 'monika':
@@ -883,6 +884,11 @@ class PlayState extends MusicBeatState #if MODDING implements mods.IHook #end
 
 		boyfriend = new Boyfriend(770, 450, SONG.player1);
 
+		switch (SONG.player1)
+		{
+		    case 'pico' | 'miku':
+		        boyfriend.x += 50;
+		}
 		// REPOSITIONING PER STAGE
 		switch (curStage)
 		{
@@ -2827,6 +2833,9 @@ class PlayState extends MusicBeatState #if MODDING implements mods.IHook #end
 					camFollow.x = dad.getMidpoint().x - 100;
 				case 'miku-voca' | 'tricky' :
 				    camFollow.y = dad.getMidpoint().y + 35;
+				case 'darnell':
+				    camFollow.x = dad.getMidpoint().x + 270;
+			        camFollow.y = dad.getMidpoint().y - 150;
 			}
 
 			if (dad.curCharacter == 'mom')
@@ -2855,8 +2864,12 @@ class PlayState extends MusicBeatState #if MODDING implements mods.IHook #end
 					camFollow.y = boyfriend.getMidpoint().y - 200;
 			}
 
-			if (boyfriend.curCharacter == 'pico' && curStage == 'philly')
-			   camFollow.x = boyfriend.getMidpoint().x - 300;
+			if (boyfriend.curCharacter == 'pico')
+			{
+			   camFollow.x = boyfriend.getMidpoint().x - 220;
+			   camFollow.y = boyfriend.getMidpoint().y - 70;
+			}
+			 
 			if (SONG.song.toLowerCase() == 'tutorial')
 				tweenCamIn();
 		}
