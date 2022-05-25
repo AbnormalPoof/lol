@@ -1,5 +1,5 @@
-danceLeft
-danceRight
+danceLeft 0 0
+danceRight 0 0
 singUP 21 50
 singDOWN 1 0
 singLEFT 32 0

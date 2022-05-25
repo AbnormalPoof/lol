@@ -1830,6 +1830,7 @@ class PlayState extends MusicBeatState #if MODDING implements mods.IHook #end
 
 		if (!paused)
 			FlxG.sound.playMusic(Paths.inst(SONG.song), 1, false);
+		
 		FlxG.sound.music.onComplete = endSong;
 		vocals.play();
 
@@ -2610,6 +2611,8 @@ class PlayState extends MusicBeatState #if MODDING implements mods.IHook #end
 			trace('WENT BACK TO FREEPLAY??');
 			switchTo(new FreeplayState());
 			botMode = false;
+			FlxG.sound.music.pitch = 1;
+	        vocals.pitch = 1;
 		}
 	}
 
