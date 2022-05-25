@@ -3225,7 +3225,8 @@ class PlayState extends MusicBeatState #if MODDING implements mods.IHook #end
 		if (trainSound.time >= 4700)
 		{
 			startedMoving = true;
-			gf.playAnim('hairBlow');
+			if (gf.curCharacter == 'gf')
+			    gf.playAnim('hairBlow');
 		}
 
 		if (startedMoving)
@@ -3248,7 +3249,8 @@ class PlayState extends MusicBeatState #if MODDING implements mods.IHook #end
 
 	function trainReset():Void
 	{
-		gf.playAnim('hairFall');
+		if (gf.curCharacter == 'gf')
+		    gf.playAnim('hairFall');
 		phillyTrain.x = FlxG.width + 200;
 		trainMoving = false;
 		// trainSound.stop();
