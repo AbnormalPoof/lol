@@ -294,7 +294,7 @@ class AnimationDebug extends MusicBeatState
 
 	function addHelpText():Void
 	{
-		var helpTextValue = "Help:\nQ/E : Zoom in and out\nF : Flip\nI/J/K/L : Pan Camera\nW/S : Cycle Animation\nArrows : Offset Animation\nShift-Arrows : Offset Animation x10\nSpace : Replay Animation\nCTRL-S : Save Offsets to File\nEnter/ESC : Exit\nPress F1 to hide/show this!\n";
+		var helpTextValue = "Help:\nQ/E : Zoom in and out\nF : Flip\nI/J/K/L : Pan Camera\nW/S : Cycle Animation\nArrows : Offset Animation\nShift-Arrows : Offset Animation x10\nSpace : Replay Animation\nY : Save Offsets to File\nBACKSPACE : Exit\nPress 1 to hide/show this!\n";
 		helpText = new FlxText(940, 20, 0, helpTextValue, 15);
 		helpText.scrollFactor.set();
 		helpText.y = FlxG.height - helpText.height - 20;
