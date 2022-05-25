@@ -2866,7 +2866,7 @@ class PlayState extends MusicBeatState #if MODDING implements mods.IHook #end
 
 			if (boyfriend.curCharacter == 'pico')
 			{
-			   camFollow.x = boyfriend.getMidpoint().x - 220;
+			   camFollow.x = boyfriend.getMidpoint().x - 240;
 			   camFollow.y = boyfriend.getMidpoint().y - 70;
 			}
 			 
