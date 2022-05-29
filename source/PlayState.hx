@@ -2546,7 +2546,6 @@ class PlayState extends MusicBeatState #if MODDING implements mods.IHook #end
 				transIn = FlxTransitionableState.defaultTransIn;
 				transOut = FlxTransitionableState.defaultTransOut;
 
-				LoadingState.unloadLibrary(curStage);
 				switchTo(new StoryMenuState());
 
 				StoryMenuState.weekUnlocked[Std.int(Math.min(storyWeek + 1, StoryMenuState.weekUnlocked.length - 1))] = true;

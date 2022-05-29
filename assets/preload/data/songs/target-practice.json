@@ -5,9 +5,9 @@
 		"gf": "gf-expo",
 		"bpm": "245.0",
 		"speed": [
-			3.7,
-			3.7,
-			3.7
+			4.3,
+			4.3,
+			4.3
 		],
 		"player1": "bf",
 		"player2": "tankman",
@@ -33392,6 +33392,15 @@
 					],
 					"bpm": 245,
 					"changeBPM": false
+				},
+				{
+					"lengthInSteps": 16,
+					"bpm": "245.0",
+					"changeBPM": false,
+					"mustHitSection": true,
+					"sectionNotes": [],
+					"typeOfSection": 0,
+					"altAnim": false
 				}
 			]
 		],

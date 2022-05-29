@@ -21,3 +21,4 @@ miku
 miku-voca
 tricky
 monika
+darnell
