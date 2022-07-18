@@ -2551,7 +2551,13 @@ class PlayState extends MusicBeatState #if MODDING implements mods.IHook #end
 
 				StoryMenuState.weekUnlocked[Std.int(Math.min(storyWeek + 1, StoryMenuState.weekUnlocked.length - 1))] = true;
 
-		        Highscore.saveWeekScore(storyWeek, campaignScore, storyDifficulty);
+				if (SONG.validScore)
+				{
+					#if newgrounds
+					NGio.unlockMedal(60961);
+					#end
+					Highscore.saveWeekScore(storyWeek, campaignScore, storyDifficulty);
+				}
 
 				FlxG.save.data.weekUnlocked = StoryMenuState.weekUnlocked;
 				FlxG.save.flush();
