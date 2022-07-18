@@ -201,15 +201,13 @@ class Character extends FlxSprite
 				quickAnimAdd('singLEFT', 'Pico Note Right0');
 				quickAnimAdd('singLEFTmiss', 'Pico Note Right Miss');
 				quickAnimAdd('singRIGHTmiss', 'Pico NOTE LEFT miss');
-
 				quickAnimAdd('singUPmiss', 'pico Up note miss');
 				quickAnimAdd('singDOWNmiss', 'Pico Down Note MISS');
-				quickAnimAdd('singDOWN-alt', 'Pico Down Shoot0');
 
 				if (!isPlayer)
 				    loadOffsetFile(curCharacter);
 				else
-				    loadOffsetFile('picoPlayer');
+				    loadOffsetFile('pico-player');
 
 				playAnim('idle');
 
@@ -577,6 +575,22 @@ class Character extends FlxSprite
 
 				loadOffsetFile(curCharacter);
 				playAnim('idle');
+		    case "nene":
+		        frames = Paths.getSparrowAtlas('characters/Nene');
+		        quickAnimAdd("danceLeft", "Nene left");
+		        quickAnimAdd("danceRight", "Nene right");
+		        loadOffsetFile(curCharacter);
+		        playAnim("danceRight");
+		    case "darnell":
+		        frames = Paths.getSparrowAtlas('characters/darnell');
+		        quickAnimAdd("idle", "Darnell idle");
+		        quickAnimAdd("singUP", "Darnell up");
+		        quickAnimAdd("singRIGHT", "Darnell right");
+		        quickAnimAdd("singDOWN", "Darnell down");
+		        quickAnimAdd("singLEFT", "Darnell left");
+		        quickAnimAdd("singUP-alt", "Darnell laugh");
+		        loadOffsetFile(curCharacter);
+		        playAnim("idle");
 			default:
 				// You can easyly place something lik trickman
 				frames = Paths.getSparrowAtlas('characters/$curCharacter');

@@ -779,6 +779,14 @@ class PlayState extends MusicBeatState #if MODDING implements mods.IHook #end
 					var fgTank3:BGSprite = new BGSprite('tank3', 1300, 1200, 3.5, 2.5, ['fg']);
 					foregroundSprites.add(fgTank3);
 				}
+			case 'darnell':
+			    {
+			        this.defaultCamZoom = 0.95;
+			        PlayState.curStage = "darnell";
+			        var bg = new BGSprite("alley", -1500, -850, 1 , 1);
+		         	bg.setGraphicSize(Std.int(bg.width * 0.5));
+			        this.add(bg);
+			    }
 			case 'stage':
 				{
 					defaultCamZoom = 0.9;
@@ -886,13 +894,14 @@ class PlayState extends MusicBeatState #if MODDING implements mods.IHook #end
 			case 'limo':
 				boyfriend.y -= 220;
 				boyfriend.x += 260;
-
 				resetFastCar();
 				add(fastCar);
-
+            case 'darnell':
+                dad.y += 550;
+                dad.x += 50;
+                gf.x += 25;
 			case 'mall':
 				boyfriend.x += 200;
-
 			case 'mall-evil':
 				boyfriend.x += 320;
 				dad.y -= 80;
@@ -1376,7 +1385,7 @@ class PlayState extends MusicBeatState #if MODDING implements mods.IHook #end
 		
 		FlxG.camera.zoom *= 1.2;
 		camFollow.y += 100;
-		tankCutscene.playAnim('wellWellWell');
+		tankCutscene.anim.play('wellWellWell');
 
 		new FlxTimer().start(3, function(tmr:FlxTimer)
 		{
@@ -1399,10 +1408,10 @@ class PlayState extends MusicBeatState #if MODDING implements mods.IHook #end
 				camFollow.x -= 800;
 				camFollow.y -= 100;
 				FlxTween.tween(FlxG.camera, {zoom: defaultCamZoom * 1.2}, 0.5, {ease: FlxEase.quadInOut});
-				tankCutscene.playAnim('killYou');
+				tankCutscene.anim.play('killYou');
 				FlxG.sound.play(Paths.sound('killYou'));
 				
-				tankCutscene.onComplete = function()
+				tankCutscene.anim.onComplete = function()
 				{
 					dad.visible = true;
 					gfCutsceneLayer.remove(tankCutscene);
@@ -1446,7 +1455,7 @@ class PlayState extends MusicBeatState #if MODDING implements mods.IHook #end
 		gfCutsceneLayer.add(tankCutscene);
 		tankCutscene.startSyncAudio = FlxG.sound.load(Paths.sound('tankSong2'));
 		tankCutscene.startSyncFrame = 4;
-		tankCutscene.playAnim();
+		tankCutscene.anim.play('');
 
 		new FlxTimer().start(4.1, function(ugly:FlxTimer)
 		{
@@ -1460,7 +1469,7 @@ class PlayState extends MusicBeatState #if MODDING implements mods.IHook #end
 		{
 			FlxG.sound.music.fadeOut((Conductor.crochet / 1000) * 5, 0);
 
-			tankCutscene.onComplete = function()
+			tankCutscene.anim.onComplete = function()
 			{
 				dad.visible = true;
 				gfCutsceneLayer.remove(tankCutscene);
@@ -1516,7 +1525,7 @@ class PlayState extends MusicBeatState #if MODDING implements mods.IHook #end
 		gfDemon2.antialiasing = true;
 		gfDemon2.anim.addBySymbol('fix', 'Pico pew pew Atlasin');
 		gfDemon2.anim.addBySymbol('kill', 'Pico Saves them sequence');
-		gfDemon2.anim.addBySymbol('idle', 'Pico Dual Wield on Speaker idle', 0, 0, 24, true);
+		gfDemon2.anim.addBySymbol('idle', 'Pico Dual Wield on Speaker idle');
 		gfDemon2.y = 390;
 		gfDemon2.x = 465;
 		fixLayer.add(gfDemon2);
@@ -1534,7 +1543,7 @@ class PlayState extends MusicBeatState #if MODDING implements mods.IHook #end
 		
 		camFollow.setPosition(camPos.x, camPos.y);
 		camFollow.y += 100;
-		tankCutscene.playAnim('littleShit');
+		tankCutscene.anim.play('littleShit');
 		if (PreferencesMenu.getPref('censor-naughty'))
 		{
 		   tankCutscene.startSyncAudio = FlxG.sound.load(Paths.sound('stressCutscene'));
@@ -1553,7 +1562,7 @@ class PlayState extends MusicBeatState #if MODDING implements mods.IHook #end
 			camFollow.x = 580;
 			fixLayer.remove(gfCuts);
 			gfDemon.visible = true;
-			gfDemon.playAnim("kill");
+			gfDemon.anim.play("kill");
 		});		
 		new FlxTimer().start(17.2, function(dagfDemon:FlxTimer)
 		{
@@ -1564,8 +1573,8 @@ class PlayState extends MusicBeatState #if MODDING implements mods.IHook #end
 			boyfriend.alpha = 1.00001;
 			boyfriend.playAnim('bfCatch');	
 			gfDemon2.visible = true;
-			gfDemon2.playAnim('fix');
-			gfDemon2.playAnim('kill');
+			gfDemon2.anim.play('fix');
+			gfDemon2.anim.play('kill');
 		});	
 		new FlxTimer().start(18.3, function (idle:FlxTimer)
 			{
@@ -1573,11 +1582,11 @@ class PlayState extends MusicBeatState #if MODDING implements mods.IHook #end
 			});						
 		new FlxTimer().start(19.3, function(ahLookWhoIsIt:FlxTimer)
 			{
-				tankCutscene.playAnim('whoItIs');
+				tankCutscene.anim.play('whoItIs');
 			});	
 		new FlxTimer().start(20.5, function(dagfDemon:FlxTimer)
 			{
-				gfDemon2.playAnim('idle');
+				gfDemon2.anim.play('idle');
 			});			
 		new FlxTimer().start(20.1, function(daSmth:FlxTimer)	
 			{
@@ -2542,13 +2551,7 @@ class PlayState extends MusicBeatState #if MODDING implements mods.IHook #end
 
 				StoryMenuState.weekUnlocked[Std.int(Math.min(storyWeek + 1, StoryMenuState.weekUnlocked.length - 1))] = true;
 
-				if (SONG.validScore)
-				{
-					#if newgrounds
-					NGio.unlockMedal(60961);
-					#end
-					Highscore.saveWeekScore(storyWeek, campaignScore, storyDifficulty);
-				}
+		        Highscore.saveWeekScore(storyWeek, campaignScore, storyDifficulty);
 
 				FlxG.save.data.weekUnlocked = StoryMenuState.weekUnlocked;
 				FlxG.save.flush();
@@ -2824,6 +2827,9 @@ class PlayState extends MusicBeatState #if MODDING implements mods.IHook #end
 					camFollow.x = dad.getMidpoint().x - 100;
 				case 'miku-voca' | 'tricky' :
 				    camFollow.y = dad.getMidpoint().y + 35;
+				case "darnell":
+				    camFollow.y = dad.getMidpoint().y - 375;
+				    camFollow.x = dad.getMidpoint().x + 125;
 			}
 
 			if (dad.curCharacter == 'mom')
@@ -2850,6 +2856,9 @@ class PlayState extends MusicBeatState #if MODDING implements mods.IHook #end
 				case 'school' | 'school-evil':
 					camFollow.x = boyfriend.getMidpoint().x - 200;
 					camFollow.y = boyfriend.getMidpoint().y - 200;
+				case "darnell":
+				    camFollow.x = boyfriend.getMidpoint().x - 175;
+				    camFollow.y = boyfriend.getMidpoint().y - 100;
 			}
 
 			if (SONG.song.toLowerCase() == 'tutorial')

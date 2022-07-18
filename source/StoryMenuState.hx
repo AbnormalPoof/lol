@@ -20,7 +20,7 @@ class StoryMenuState extends MusicBeatState
 	var scoreText:FlxText;
 
 	var weekData:Array<Dynamic> = [
-		['Stress'],
+		['Tutorial'],
 		['Bopeebo', 'Fresh', 'Dadbattle'],
 		['Spookeez', 'South', "Monster"],
 		['Pico', 'Philly', "Blammed"],
@@ -28,14 +28,15 @@ class StoryMenuState extends MusicBeatState
 		['Cocoa', 'Eggnog', 'Winter-Horrorland'],
 		['Senpai', 'Roses', 'Thorns'],
 		['Ugh', 'Guns', 'Stress'],
-		['Loid', 'Endurance', 'Voca']
+		['Loid', 'Endurance', 'Voca'],
+		['Darnell', 'Lit-Up', 'Hot']
 	];
 	var curDifficulty:Int = 1;
 
-	public static var weekUnlocked:Array<Bool> = [true, true, true, true, true, true, true, true, true];
+	public static var weekUnlocked:Array<Bool> = [true, true, true, true, true, true, true, true, true, true];
 
 	var weekCharacters:Array<Dynamic> = [
-		['tankman', 'bf', 'gf'],
+		['dad', 'bf', 'gf'],
 		['dad', 'bf', 'gf'],
 		['spooky', 'bf', 'gf'],
 		['pico', 'bf', 'gf'],
@@ -43,11 +44,12 @@ class StoryMenuState extends MusicBeatState
 		['parents-christmas', 'bf', 'gf'],
 		['senpai', 'bf', 'gf'],
 		['tankman', 'bf', 'gf'],
-		['dad', 'pico', 'gf']
+		['dad', 'bf', 'gf'],
+		['dad', 'bf', 'gf']
 	];
 
 	var weekNames:Array<String> = [
-		"Cutscene Test",
+		"How To Funk",
 		"Daddy Dearest",
 		"Spooky Month",
 		"PICO",
@@ -55,7 +57,8 @@ class StoryMenuState extends MusicBeatState
 		"RED SNOW",
 		"hating simulator ft. moawling",
 		"TANKMAN",
-		"Miku Expo ft. Evdial and GenoX"
+		"Miku Expo ft. Evdial and GenoX",
+		"Pico's School 3 ft. IvanAlmighty"
 	];
 
 	var txtWeekTitle:FlxText;
