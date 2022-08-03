@@ -41,7 +41,7 @@ jobs:
           haxelib install hxcs
           haxelib install polymod
           haxelib install flixel-addons
-          haxelib git flxanimate https://github.com/Dot-Stuff/flxanimate
+          haxelib install flxanimate 1.1.0
           haxelib git faxe https://github.com/uhrobots/faxe
           haxelib git discord_rpc https://github.com/Aidan63/linc_discord-rpc
           haxelib git firetongue https://github.com/larsiusprime/firetongue
