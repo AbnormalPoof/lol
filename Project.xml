@@ -150,8 +150,6 @@
 	<haxelib name="faxe" if='switch' />
 	<haxelib name="polymod" />
 	<haxelib name="firetongue" />
-	<haxelib name="colyseus" />
-	<haxelib name="colyseus-websocket" />
 	<haxelib name="discord_rpc" if="cpp" unless='switch || mobile || hl' />
 	<haxelib name="flxanimate" />
 	<!--<haxelib name="hxcpp-debug-server" if="desktop debug"/>-->
