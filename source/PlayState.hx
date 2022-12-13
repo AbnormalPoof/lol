@@ -1524,7 +1524,7 @@ class PlayState extends MusicBeatState #if MODDING implements mods.IHook #end
 		gfDemon2.antialiasing = true;
 		gfDemon2.anim.addBySymbol('fix', 'Pico pew pew Atlasin');
 		gfDemon2.anim.addBySymbol('kill', 'Pico Saves them sequence');
-		gfDemon2.anim.addBySymbol('idle', 'Pico Dual Wield on Speaker idle', null, null, 24);
+		gfDemon2.anim.addBySymbol('idle', 'Pico Dual Wield on Speaker idle', 0, 0, 24);
 		gfDemon2.y = 390;
 		gfDemon2.x = 465;
 		fixLayer.add(gfDemon2);
@@ -1804,7 +1804,7 @@ class PlayState extends MusicBeatState #if MODDING implements mods.IHook #end
 			FlxG.sound.play(Paths.sound(introSndPaths[swagCounter]), 0.6);
 
 			swagCounter += 1;
-		}, 4);
+		});
 	}
 
 	function readySetGo(path:String):Void
