@@ -97,28 +97,28 @@
 	<assets path="assets/shared"   					library="shared"   		exclude="*.mp3" unless="web"/>
 	<assets path="assets/stage" 					library="stage" 		exclude="*.ogg" if="web"/>
 	<assets path="assets/stage" 					library="stage" 		exclude="*.mp3" unless="web"/>
-	<assets path="assets/spooky"    				library="spooky"    	exclude="*.ogg" if="web"/>
-	<assets path="assets/spooky"    				library="spooky"    	exclude="*.mp3" unless="web"/>
-	<assets path="assets/philly"    				library="philly"    	exclude="*.ogg" if="web"/>
-	<assets path="assets/philly"    				library="philly"    	exclude="*.mp3" unless="web"/>
+	<assets path="assets/spooky"    				library="spooky"    	        exclude="*.ogg" if="web"/>
+	<assets path="assets/spooky"    				library="spooky"    	        exclude="*.mp3" unless="web"/>
+	<assets path="assets/philly"    				library="philly"    	        exclude="*.ogg" if="web"/>
+	<assets path="assets/philly"    				library="philly"    	        exclude="*.mp3" unless="web"/>
 	<assets path="assets/limo"    					library="limo"    		exclude="*.ogg" if="web"/>
 	<assets path="assets/limo"    					library="limo"    		exclude="*.mp3" unless="web"/>
 	<assets path="assets/mall"    					library="mall"    		exclude="*.ogg" if="web"/>
 	<assets path="assets/mall"    					library="mall"    		exclude="*.mp3" unless="web"/>
-	<assets path="assets/mall-evil"     			library="mall-evil"    	exclude="*.ogg" if="web"/>
-	<assets path="assets/mall-evil"     			library="mall-evil"    	exclude="*.mp3" unless="web"/>
-	<assets path="assets/school"    				library="school"    	exclude="*.ogg" if="web"/>
-	<assets path="assets/school"    				library="school"    	exclude="*.mp3" unless="web"/>
-	<assets path="assets/school-evil"  				library="school-evil"   exclude="*.ogg" if="web"/>
-	<assets path="assets/school-evil"   			library="school-evil"   exclude="*.mp3" unless="web"/>
+	<assets path="assets/mall-evil"     			        library="mall-evil"    	        exclude="*.ogg" if="web"/>
+	<assets path="assets/mall-evil"     			        library="mall-evil"    	        exclude="*.mp3" unless="web"/>
+	<assets path="assets/school"    				library="school"    	        exclude="*.ogg" if="web"/>
+	<assets path="assets/school"    				library="school"    	        exclude="*.mp3" unless="web"/>
+	<assets path="assets/school-evil"  				library="school-evil"           exclude="*.ogg" if="web"/>
+	<assets path="assets/school-evil"   			        library="school-evil"           exclude="*.mp3" unless="web"/>
 	<assets path="assets/tank"    					library="tank"    		exclude="*.ogg" if="web"/>
 	<assets path="assets/tank"    					library="tank"    		exclude="*.mp3" unless="web"/>
 	<assets path="assets/expo"    					library="expo"    		exclude="*.ogg" if="web"/>
 	<assets path="assets/expo"    					library="expo"    		exclude="*.mp3" unless="web"/>
-	<assets path="assets/expo-two"    				library="expo-two"    	exclude="*.ogg" if="web"/>
-	<assets path="assets/expo-two"    				library="expo-two"    	exclude="*.mp3" unless="web"/>
-	<assets path="assets/endless"    				library="endless"    	exclude="*.ogg" if="web"/>
-	<assets path="assets/endless"    				library="endless"    	exclude="*.mp3" unless="web"/>
+	<assets path="assets/expo-two"    				library="expo-two"    	        exclude="*.ogg" if="web"/>
+	<assets path="assets/expo-two"    				library="expo-two"    	        exclude="*.mp3" unless="web"/>
+	<assets path="assets/endless"    				library="endless"    	        exclude="*.ogg" if="web"/>
+	<assets path="assets/endless"    				library="endless"    	        exclude="*.mp3" unless="web"/>
 	<assets path="assets/concert"    				library="concert"    		exclude="*.ogg" if="web"/>
 	<assets path="assets/concert"    				library="concert"    		exclude="*.mp3" unless="web"/>
 
