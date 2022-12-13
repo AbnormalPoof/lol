@@ -1524,7 +1524,7 @@ class PlayState extends MusicBeatState #if MODDING implements mods.IHook #end
 		gfDemon2.antialiasing = true;
 		gfDemon2.anim.addBySymbol('fix', 'Pico pew pew Atlasin');
 		gfDemon2.anim.addBySymbol('kill', 'Pico Saves them sequence');
-		gfDemon2.anim.addBySymbol('idle', 'Pico Dual Wield on Speaker idle', 0, 0, 24, true);
+		gfDemon2.anim.addBySymbol('idle', 'Pico Dual Wield on Speaker idle', x, y, 24, true);
 		gfDemon2.y = 390;
 		gfDemon2.x = 465;
 		fixLayer.add(gfDemon2);
@@ -2888,8 +2888,6 @@ class PlayState extends MusicBeatState #if MODDING implements mods.IHook #end
 			controls.NOTE_RIGHT_R
 		];
 
-		if (generatedMusic)
-			Net.send('hitNote', {held: holdArray});
 
 		// HOLDS, check for sustain notes.
 		if (holdArray.contains(true) && generatedMusic)
