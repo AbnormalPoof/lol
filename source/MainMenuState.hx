@@ -1,6 +1,5 @@
 package;
 
-import netTest.Net;
 import flixel.ui.FlxVirtualPad;
 import ui.Prompt;
 import flixel.FlxSubState;

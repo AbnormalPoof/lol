@@ -1,6 +1,5 @@
 package;
 
-import netTest.Net;
 import flixel.math.FlxMath;
 import flixel.tweens.FlxTween;
 import flixel.FlxSprite;

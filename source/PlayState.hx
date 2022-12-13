@@ -28,7 +28,6 @@ import flixel.util.FlxColor;
 import flixel.util.FlxSort;
 import flixel.util.FlxTimer;
 import lime.utils.Assets;
-import netTest.Net;
 import shadersLmfao.BuildingShaders;
 import shadersLmfao.ColorSwap;
 import shadersLmfao.WaveShader;
@@ -2661,7 +2660,6 @@ class PlayState extends MusicBeatState #if MODDING implements mods.IHook #end
 		onPopUpScore(daRating);
 		#end
 
-		Net.send('addScore', score);
 
 		// TODO: Add Note Skins and Special Notes (Burning etc).
 		if (isSick && PreferencesMenu.getPref("noteSplash"))
