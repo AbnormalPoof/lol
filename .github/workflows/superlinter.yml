@@ -40,7 +40,7 @@ jobs:
           haxelib install newgrounds 1.1.5
           haxelib install hxcs
           haxelib install polymod
-          haxelib install flxanimate
+          haxelib install flxanimate 1.1.1
           haxelib git faxe https://github.com/uhrobots/faxe
           haxelib git discord_rpc https://github.com/Aidan63/linc_discord-rpc
           haxelib git firetongue https://github.com/larsiusprime/firetongue

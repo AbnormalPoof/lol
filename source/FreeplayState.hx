@@ -199,24 +199,11 @@ class FreeplayState extends MusicBeatState
 
 	function accept()
 	{
-		if (Net.connection == CONNECTED)
-		{
-			Net.send('switchSong', {
-				name: songs[curSelected].name.toLowerCase(),
-				storyMode: false,
-				difficulty: curDifficulty,
-				week: songs[curSelected].week
-			});
-		}
-		else
-		{
-			PlayState.SONG = Song.loadFromJson(songs[curSelected].name.toLowerCase());
-			PlayState.isStoryMode = false;
-			PlayState.storyDifficulty = curDifficulty;
-			PlayState.storyWeek = songs[curSelected].week;
-
-			LoadingState.loadAndSwitchState(new PlayState());
-		}
+		PlayState.SONG = Song.loadFromJson(songs[curSelected].name.toLowerCase());
+		PlayState.isStoryMode = false;
+		PlayState.storyDifficulty = curDifficulty;
+		PlayState.storyWeek = songs[curSelected].week;
+		LoadingState.loadAndSwitchState(new PlayState());
 	}
 
 	override function switchTo(nextState:FlxState):Bool
